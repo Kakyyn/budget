@@ -1,0 +1,1668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>Budget Tracker</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- iOS PWA Meta Tags -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Budget Tracker">
+    <meta name="theme-color" content="#2563eb">
+    
+    <!-- App Icons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/42359127-3c98-4ea4-b0c8-165f23f92270.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/edf23dda-89cb-42e7-8a61-fa485f89a28a.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/d750438b-32c7-4b13-b323-29f0bd200271.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/2cd68cdf-3632-4135-b251-559d5ecb4287.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/a2dab85d-b1b7-4902-875a-7b549e65fb5c.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/838a0f6b-960f-49fb-b01a-373313a3bd3a.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/fba7b449-b681-4605-b1f8-f610de38fe72.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/a3f8eb63-ad7e-42e1-9fa8-e0c7e37a73db.png">
+    <link rel="apple-touch-icon" sizes="57x57" href="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/d6996f12-d8e6-4482-b528-7adc5f3c29ff.png">
+    
+    <!-- Web App Manifest -->
+    <link rel="manifest" id="app-manifest">
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            font-family: 'Inter', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            user-select: none;
+        }
+        
+        input, textarea, select {
+            -webkit-user-select: text;
+            user-select: text;
+        }
+        
+        body {
+            padding-top: env(safe-area-inset-top);
+            padding-bottom: env(safe-area-inset-bottom);
+            padding-left: env(safe-area-inset-left);
+            padding-right: env(safe-area-inset-right);
+            overscroll-behavior: none;
+        }
+        
+        .notion-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e5e7eb;
+        }
+        
+        .notion-button {
+            background: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 12px 16px;
+            font-weight: 600;
+            transition: all 0.2s;
+            touch-action: manipulation;
+        }
+        
+        .notion-button:hover, .notion-button:focus {
+            background: #1d4ed8;
+            transform: translateY(-1px);
+        }
+        
+        .notion-button:active {
+            transform: translateY(0);
+        }
+        
+        .modal-backdrop {
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+        }
+        
+        .progress-bar {
+            background: linear-gradient(90deg, #10b981, #059669);
+            border-radius: 6px;
+            height: 8px;
+            transition: width 0.3s ease;
+        }
+        
+        .expense-item:hover, .income-item:hover, .debt-item:hover, .savings-item:hover {
+            background: #f9fafb;
+            transform: translateY(-1px);
+            transition: all 0.2s;
+        }
+        
+        .stat-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .income-card {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+        }
+        
+        .expense-card {
+            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+        }
+        
+        .debt-card {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+        }
+        
+        .savings-card {
+            background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+        }
+        
+        .view-toggle {
+            background: #f3f4f6;
+            border-radius: 10px;
+            padding: 4px;
+            display: flex;
+            gap: 4px;
+        }
+        
+        .view-toggle button {
+            padding: 10px 14px;
+            border-radius: 8px;
+            font-weight: 500;
+            transition: all 0.2s;
+            border: none;
+            background: transparent;
+            color: #6b7280;
+            font-size: 14px;
+        }
+        
+        .view-toggle button.active {
+            background: white;
+            color: #1f2937;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .chart-container {
+            position: relative;
+            height: 280px;
+            margin: 20px 0;
+        }
+        
+        .chart-container canvas {
+            max-height: 280px !important;
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.3s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .settings-toggle {
+            background: #f3f4f6;
+            border-radius: 8px;
+            padding: 2px;
+            display: flex;
+            gap: 2px;
+        }
+        
+        .settings-toggle button {
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: all 0.2s;
+            border: none;
+            background: transparent;
+            color: #6b7280;
+            font-size: 0.875rem;
+        }
+        
+        .settings-toggle button.active {
+            background: white;
+            color: #1f2937;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+        
+        .currency-badge {
+            background: #e5e7eb;
+            color: #374151;
+            padding: 4px 8px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        
+        .settings-panel {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            padding: 20px;
+            min-width: 280px;
+            z-index: 1000;
+        }
+        
+        .mobile-header {
+            position: sticky;
+            top: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            z-index: 100;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+        
+        .mobile-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: white;
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .mobile-modal.show {
+            transform: translateY(0);
+        }
+        
+        .mobile-modal-header {
+            padding: 16px 20px;
+            border-bottom: 1px solid #e5e7eb;
+            display: flex;
+            justify-content: between;
+            align-items: center;
+            background: #f9fafb;
+        }
+        
+        .mobile-modal-content {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
+        }
+        
+        .touch-target {
+            min-height: 44px;
+            min-width: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .quick-action-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+        
+        @media (min-width: 640px) {
+            .quick-action-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+        
+        .action-button {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 20px 16px;
+            border-radius: 12px;
+            font-weight: 600;
+            transition: all 0.2s;
+            text-align: center;
+            min-height: 100px;
+        }
+        
+        .action-button i {
+            font-size: 24px;
+        }
+        
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+            padding: 8px 0;
+            padding-bottom: env(safe-area-inset-bottom, 8px);
+            z-index: 100;
+        }
+        
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 8px 12px;
+            border-radius: 8px;
+            transition: all 0.2s;
+            color: #6b7280;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .nav-item.active {
+            color: #2563eb;
+            background: rgba(37, 99, 235, 0.1);
+        }
+        
+        .nav-item i {
+            font-size: 20px;
+            margin-bottom: 4px;
+        }
+        
+        .content-with-nav {
+            padding-bottom: 80px;
+        }
+        
+        .install-prompt {
+            position: fixed;
+            bottom: 90px;
+            left: 16px;
+            right: 16px;
+            background: #2563eb;
+            color: white;
+            padding: 16px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 4px 20px rgba(37, 99, 235, 0.3);
+            transform: translateY(200px);
+            transition: transform 0.3s ease;
+            z-index: 1000;
+        }
+        
+        .install-prompt.show {
+            transform: translateY(0);
+        }
+        
+        @media (display-mode: standalone) {
+            .install-prompt {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <!-- Mobile Header -->
+    <header class="mobile-header">
+        <div class="px-4 py-3">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center">
+                        <i class="fas fa-wallet text-white text-lg"></i>
+                    </div>
+                    <h1 class="text-xl font-bold text-gray-900" data-translate="title">Budget Tracker</h1>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <!-- Settings -->
+                    <div class="relative">
+                        <button onclick="toggleSettings()" class="touch-target text-gray-500 hover:text-gray-700 rounded-lg hover:bg-gray-100">
+                            <i class="fas fa-cog text-lg"></i>
+                        </button>
+                        <div id="settingsPanel" class="settings-panel hidden">
+                            <h3 class="text-lg font-semibold text-gray-900 mb-4" data-translate="settings">Settings</h3>
+                            
+                            <div class="mb-4">
+                                <label class="block text-sm font-medium text-gray-700 mb-2" data-translate="language">Language</label>
+                                <div class="settings-toggle">
+                                    <button onclick="changeLanguage('en')" id="langEn" class="active">English</button>
+                                    <button onclick="changeLanguage('es')" id="langEs">Español</button>
+                                </div>
+                            </div>
+                            
+                            <div class="mb-4">
+                                <label class="block text-sm font-medium text-gray-700 mb-2" data-translate="baseCurrency">Base Currency</label>
+                                <div class="settings-toggle">
+                                    <button onclick="changeBaseCurrency('USD')" id="currUSD" class="active">USD</button>
+                                    <button onclick="changeBaseCurrency('CRC')" id="currCRC">CRC</button>
+                                </div>
+                            </div>
+                            
+                            <div class="mb-4">
+                                <label class="block text-sm font-medium text-gray-700 mb-2" data-translate="exchangeRate">Exchange Rate (USD to CRC)</label>
+                                <input type="number" id="exchangeRate" value="520" step="0.01" 
+                                       class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                       onchange="updateExchangeRate()">
+                                <p class="text-xs text-gray-500 mt-1" data-translate="exchangeRateHelp">1 USD = X CRC</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="content-with-nav">
+        <div class="px-4 py-6">
+            <!-- Dashboard Overview -->
+            <div class="grid grid-cols-2 gap-4 mb-6">
+                <!-- Total Balance Card -->
+                <div class="notion-card stat-card p-4">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-white/80 text-xs font-medium" data-translate="totalBalance">Total Balance</p>
+                            <p class="text-lg font-bold text-white" id="totalBalance">$0.00</p>
+                            <p class="text-xs text-white/60" id="totalBalanceSecondary"></p>
+                        </div>
+                        <i class="fas fa-chart-line text-white/60 text-xl"></i>
+                    </div>
+                </div>
+
+                <!-- Income Card -->
+                <div class="notion-card income-card p-4">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-white/80 text-xs font-medium" data-translate="income">Income</p>
+                            <p class="text-lg font-bold text-white" id="totalIncome">$0.00</p>
+                            <p class="text-xs text-white/60" id="totalIncomeSecondary"></p>
+                        </div>
+                        <i class="fas fa-arrow-up text-white/60 text-xl"></i>
+                    </div>
+                </div>
+
+                <!-- Expenses Card -->
+                <div class="notion-card expense-card p-4">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-white/80 text-xs font-medium" data-translate="expenses">Expenses</p>
+                            <p class="text-lg font-bold text-white" id="totalExpenses">$0.00</p>
+                            <p class="text-xs text-white/60" id="totalExpensesSecondary"></p>
+                        </div>
+                        <i class="fas fa-arrow-down text-white/60 text-xl"></i>
+                    </div>
+                </div>
+
+                <!-- Savings Card -->
+                <div class="notion-card savings-card p-4">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-white/80 text-xs font-medium" data-translate="savings">Savings</p>
+                            <p class="text-lg font-bold text-white" id="totalSavings">$0.00</p>
+                            <p class="text-xs text-white/60" id="totalSavingsSecondary"></p>
+                        </div>
+                        <i class="fas fa-piggy-bank text-white/60 text-xl"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="notion-card p-4 mb-6">
+                <h2 class="text-lg font-semibold text-gray-900 mb-4" data-translate="quickActions">Quick Actions</h2>
+                <div class="quick-action-grid">
+                    <button onclick="openModal('income')" class="action-button bg-green-600 hover:bg-green-700 text-white">
+                        <i class="fas fa-plus"></i>
+                        <span data-translate="addIncome">Add Income</span>
+                    </button>
+                    <button onclick="openModal('expense')" class="action-button bg-red-600 hover:bg-red-700 text-white">
+                        <i class="fas fa-minus"></i>
+                        <span data-translate="addExpense">Add Expense</span>
+                    </button>
+                    <button onclick="openModal('debt')" class="action-button bg-yellow-600 hover:bg-yellow-700 text-white">
+                        <i class="fas fa-credit-card"></i>
+                        <span data-translate="addDebt">Add Debt</span>
+                    </button>
+                    <button onclick="openModal('savings')" class="action-button bg-purple-600 hover:bg-purple-700 text-white">
+                        <i class="fas fa-coins"></i>
+                        <span data-translate="addSavings">Add Savings</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- List View Content -->
+            <div id="listView" class="fade-in">
+                <div class="space-y-6">
+                    <!-- Income Section -->
+                    <div class="notion-card">
+                        <div class="p-4 border-b">
+                            <div class="flex items-center justify-between">
+                                <h3 class="text-lg font-semibold text-gray-900 flex items-center">
+                                    <i class="fas fa-arrow-up text-green-600 mr-2"></i>
+                                    <span data-translate="recentIncome">Recent Income</span>
+                                </h3>
+                                <button onclick="openModal('income')" class="text-blue-600 hover:text-blue-700 text-sm font-medium touch-target">
+                                    + <span data-translate="addIncome">Add Income</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <div id="incomeList" class="space-y-3 max-h-64 overflow-y-auto">
+                                <div class="text-center text-gray-500 py-8">
+                                    <i class="fas fa-wallet text-4xl mb-3 text-gray-300"></i>
+                                    <p data-translate="noIncomeEntries">No income entries yet</p>
+                                    <p class="text-sm" data-translate="addFirstIncome">Add your first income source</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Expenses Section -->
+                    <div class="notion-card">
+                        <div class="p-4 border-b">
+                            <div class="flex items-center justify-between">
+                                <h3 class="text-lg font-semibold text-gray-900 flex items-center">
+                                    <i class="fas fa-arrow-down text-red-600 mr-2"></i>
+                                    <span data-translate="recentExpenses">Recent Expenses</span>
+                                </h3>
+                                <button onclick="openModal('expense')" class="text-blue-600 hover:text-blue-700 text-sm font-medium touch-target">
+                                    + <span data-translate="addExpense">Add Expense</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <div id="expensesList" class="space-y-3 max-h-64 overflow-y-auto">
+                                <div class="text-center text-gray-500 py-8">
+                                    <i class="fas fa-shopping-cart text-4xl mb-3 text-gray-300"></i>
+                                    <p data-translate="noExpensesRecorded">No expenses recorded</p>
+                                    <p class="text-sm" data-translate="trackSpending">Track your spending</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Debt Section -->
+                    <div class="notion-card">
+                        <div class="p-4 border-b">
+                            <div class="flex items-center justify-between">
+                                <h3 class="text-lg font-semibold text-gray-900 flex items-center">
+                                    <i class="fas fa-credit-card text-yellow-600 mr-2"></i>
+                                    <span data-translate="debtTracking">Debt Tracking</span>
+                                </h3>
+                                <button onclick="openModal('debt')" class="text-blue-600 hover:text-blue-700 text-sm font-medium touch-target">
+                                    + <span data-translate="addDebt">Add Debt</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <div id="debtList" class="space-y-4 max-h-64 overflow-y-auto">
+                                <div class="text-center text-gray-500 py-8">
+                                    <i class="fas fa-handshake text-4xl mb-3 text-gray-300"></i>
+                                    <p data-translate="noDebtsTracked">No debts tracked</p>
+                                    <p class="text-sm" data-translate="monitorDebts">Monitor your debts</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Savings Section -->
+                    <div class="notion-card">
+                        <div class="p-4 border-b">
+                            <div class="flex items-center justify-between">
+                                <h3 class="text-lg font-semibold text-gray-900 flex items-center">
+                                    <i class="fas fa-piggy-bank text-purple-600 mr-2"></i>
+                                    <span data-translate="savingsGoals">Savings Goals</span>
+                                </h3>
+                                <button onclick="openModal('savings')" class="text-blue-600 hover:text-blue-700 text-sm font-medium touch-target">
+                                    + <span data-translate="addSavings">Add Savings</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <div id="savingsList" class="space-y-4 max-h-64 overflow-y-auto">
+                                <div class="text-center text-gray-500 py-8">
+                                    <i class="fas fa-target text-4xl mb-3 text-gray-300"></i>
+                                    <p data-translate="noSavingsGoals">No savings goals set</p>
+                                    <p class="text-sm" data-translate="startSaving">Start saving for your goals</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Graph View Content -->
+            <div id="graphView" class="hidden fade-in">
+                <div class="space-y-6">
+                    <!-- Income vs Expenses Chart -->
+                    <div class="notion-card p-4">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-4 flex items-center">
+                            <i class="fas fa-chart-line text-blue-600 mr-2"></i>
+                            <span data-translate="incomeExpensesTrend">Income vs Expenses Trend</span>
+                        </h3>
+                        <div class="chart-container">
+                            <canvas id="incomeExpenseChart"></canvas>
+                        </div>
+                    </div>
+
+                    <!-- Expense Categories Pie Chart -->
+                    <div class="notion-card p-4">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-4 flex items-center">
+                            <i class="fas fa-chart-pie text-red-600 mr-2"></i>
+                            <span data-translate="expenseCategories">Expense Categories</span>
+                        </h3>
+                        <div class="chart-container">
+                            <canvas id="expenseCategoryChart"></canvas>
+                        </div>
+                    </div>
+
+                    <!-- Monthly Totals Bar Chart -->
+                    <div class="notion-card p-4">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-4 flex items-center">
+                            <i class="fas fa-chart-bar text-green-600 mr-2"></i>
+                            <span data-translate="monthlyTotals">Monthly Totals</span>
+                        </h3>
+                        <div class="chart-container">
+                            <canvas id="monthlyTotalsChart"></canvas>
+                        </div>
+                    </div>
+
+                    <!-- Savings Progress -->
+                    <div class="notion-card p-4">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-4 flex items-center">
+                            <i class="fas fa-target text-purple-600 mr-2"></i>
+                            <span data-translate="savingsProgress">Savings Progress</span>
+                        </h3>
+                        <div class="chart-container">
+                            <canvas id="savingsProgressChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bottom Navigation -->
+    <div class="bottom-nav">
+        <div class="flex justify-around">
+            <button onclick="switchView('list')" id="navList" class="nav-item active">
+                <i class="fas fa-list"></i>
+                <span data-translate="listView">List</span>
+            </button>
+            <button onclick="switchView('graph')" id="navGraph" class="nav-item">
+                <i class="fas fa-chart-bar"></i>
+                <span data-translate="graphView">Charts</span>
+            </button>
+            <button onclick="openModal('expense')" class="nav-item">
+                <i class="fas fa-plus"></i>
+                <span data-translate="addExpense">Add</span>
+            </button>
+            <button onclick="exportData()" class="nav-item">
+                <i class="fas fa-download"></i>
+                <span data-translate="export">Export</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Mobile Modal -->
+    <div id="modal" class="mobile-modal">
+        <div class="mobile-modal-header">
+            <h3 id="modalTitle" class="text-lg font-semibold text-gray-900">Add Entry</h3>
+            <button onclick="closeModal()" class="touch-target text-gray-400 hover:text-gray-600">
+                <i class="fas fa-times text-lg"></i>
+            </button>
+        </div>
+        <div class="mobile-modal-content">
+            <form id="entryForm" class="space-y-6">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2" data-translate="description">Description</label>
+                    <input type="text" id="description" required class="w-full border border-gray-300 rounded-lg px-4 py-3 text-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2" data-translate="amount">Amount</label>
+                        <input type="number" id="amount" step="0.01" required class="w-full border border-gray-300 rounded-lg px-4 py-3 text-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2" data-translate="currency">Currency</label>
+                        <select id="entryCurrency" class="w-full border border-gray-300 rounded-lg px-4 py-3 text-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            <option value="USD">USD</option>
+                            <option value="CRC">CRC</option>
+                        </select>
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2" data-translate="category">Category</label>
+                    <select id="category" required class="w-full border border-gray-300 rounded-lg px-4 py-3 text-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <!-- Options will be populated by JavaScript -->
+                    </select>
+                </div>
+                <div id="targetAmountField" class="hidden">
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2" data-translate="targetAmount">Target Amount</label>
+                            <input type="number" id="targetAmount" step="0.01" class="w-full border border-gray-300 rounded-lg px-4 py-3 text-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2" data-translate="targetCurrency">Target Currency</label>
+                            <select id="targetCurrency" class="w-full border border-gray-300 rounded-lg px-4 py-3 text-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                <option value="USD">USD</option>
+                                <option value="CRC">CRC</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2" data-translate="date">Date</label>
+                    <input type="date" id="date" required class="w-full border border-gray-300 rounded-lg px-4 py-3 text-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                </div>
+                <div class="flex space-x-4 pt-4">
+                    <button type="submit" class="flex-1 notion-button py-4 text-lg" data-translate="addEntry">Add Entry</button>
+                    <button type="button" onclick="closeModal()" class="flex-1 border border-gray-300 rounded-lg py-4 text-lg text-gray-700 hover:bg-gray-50" data-translate="cancel">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Install Prompt -->
+    <div id="installPrompt" class="install-prompt">
+        <div class="flex-1">
+            <h3 class="font-semibold">Install Budget Tracker</h3>
+            <p class="text-sm text-blue-100">Add to your home screen for quick access!</p>
+        </div>
+        <div class="flex space-x-2">
+            <button onclick="installApp()" class="bg-white text-blue-600 px-4 py-2 rounded-lg font-medium">Install</button>
+            <button onclick="dismissInstallPrompt()" class="text-blue-100 px-2 py-2">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // PWA Install functionality
+        let deferredPrompt;
+        let installPromptDismissed = localStorage.getItem('installPromptDismissed') === 'true';
+
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            
+            if (!installPromptDismissed) {
+                setTimeout(() => {
+                    document.getElementById('installPrompt').classList.add('show');
+                }, 3000);
+            }
+        });
+
+        function installApp() {
+            if (deferredPrompt) {
+                deferredPrompt.prompt();
+                deferredPrompt.userChoice.then((choiceResult) => {
+                    if (choiceResult.outcome === 'accepted') {
+                        console.log('User accepted the install prompt');
+                    }
+                    deferredPrompt = null;
+                    document.getElementById('installPrompt').classList.remove('show');
+                });
+            }
+        }
+
+        function dismissInstallPrompt() {
+            document.getElementById('installPrompt').classList.remove('show');
+            localStorage.setItem('installPromptDismissed', 'true');
+        }
+
+        // Generate manifest dynamically
+        const manifest = {
+            "name": "Budget Tracker",
+            "short_name": "Budget",
+            "start_url": "./",
+            "display": "standalone",
+            "background_color": "#f9fafb",
+            "theme_color": "#2563eb",
+            "icons": [
+                {
+                    "src": "https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/29460fe1-e690-4b63-b511-f95cf4448a81.png",
+                    "sizes": "192x192",
+                    "type": "image/png"
+                },
+                {
+                    "src": "https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/6e675d77-9164-454d-a18c-164ece6fe185.png", 
+                    "sizes": "512x512",
+                    "type": "image/png"
+                }
+            ]
+        };
+
+        const manifestBlob = new Blob([JSON.stringify(manifest)], {type: 'application/json'});
+        const manifestURL = URL.createObjectURL(manifestBlob);
+        document.getElementById('app-manifest').href = manifestURL;
+
+        // Language translations
+        const translations = {
+            en: {
+                title: "Budget Tracker",
+                settings: "Settings",
+                language: "Language",
+                baseCurrency: "Base Currency",
+                exchangeRate: "Exchange Rate (USD to CRC)",
+                exchangeRateHelp: "1 USD = X CRC",
+                listView: "List",
+                graphView: "Charts",
+                totalBalance: "Total Balance",
+                income: "Income",
+                expenses: "Expenses",
+                savings: "Savings",
+                quickActions: "Quick Actions",
+                addIncome: "Add Income",
+                addExpense: "Add Expense",
+                addDebt: "Add Debt",
+                addSavings: "Add Savings",
+                recentIncome: "Recent Income",
+                recentExpenses: "Recent Expenses",
+                debtTracking: "Debt Tracking",
+                savingsGoals: "Savings Goals",
+                noIncomeEntries: "No income entries yet",
+                addFirstIncome: "Add your first income source",
+                noExpensesRecorded: "No expenses recorded",
+                trackSpending: "Track your spending",
+                noDebtsTracked: "No debts tracked",
+                monitorDebts: "Monitor your debts",
+                noSavingsGoals: "No savings goals set",
+                startSaving: "Start saving for your goals",
+                incomeExpensesTrend: "Income vs Expenses Trend",
+                expenseCategories: "Expense Categories",
+                monthlyTotals: "Monthly Totals",
+                savingsProgress: "Savings Progress",
+                description: "Description",
+                amount: "Amount",
+                currency: "Currency",
+                category: "Category",
+                targetAmount: "Target Amount",
+                targetCurrency: "Target Currency",
+                date: "Date",
+                addEntry: "Add Entry",
+                cancel: "Cancel",
+                export: "Export"
+            },
+            es: {
+                title: "Control de Presupuesto",
+                settings: "Configuración",
+                language: "Idioma",
+                baseCurrency: "Moneda Base",
+                exchangeRate: "Tipo de Cambio (USD a CRC)",
+                exchangeRateHelp: "1 USD = X CRC",
+                listView: "Lista",
+                graphView: "Gráficos",
+                totalBalance: "Balance Total",
+                income: "Ingresos",
+                expenses: "Gastos",
+                savings: "Ahorros",
+                quickActions: "Acciones Rápidas",
+                addIncome: "Agregar Ingreso",
+                addExpense: "Agregar Gasto",
+                addDebt: "Agregar Deuda",
+                addSavings: "Agregar Ahorro",
+                recentIncome: "Ingresos Recientes",
+                recentExpenses: "Gastos Recientes",
+                debtTracking: "Control de Deudas",
+                savingsGoals: "Metas de Ahorro",
+                noIncomeEntries: "Aún no hay ingresos",
+                addFirstIncome: "Agrega tu primera fuente de ingresos",
+                noExpensesRecorded: "No hay gastos registrados",
+                trackSpending: "Rastrea tus gastos",
+                noDebtsTracked: "No hay deudas registradas",
+                monitorDebts: "Monitorea tus deudas",
+                noSavingsGoals: "No hay metas de ahorro",
+                startSaving: "Comienza a ahorrar para tus metas",
+                incomeExpensesTrend: "Tendencia Ingresos vs Gastos",
+                expenseCategories: "Categorías de Gastos",
+                monthlyTotals: "Totales Mensuales",
+                savingsProgress: "Progreso de Ahorros",
+                description: "Descripción",
+                amount: "Cantidad",
+                currency: "Moneda",
+                category: "Categoría",
+                targetAmount: "Cantidad Objetivo",
+                targetCurrency: "Moneda Objetivo",
+                date: "Fecha",
+                addEntry: "Agregar Entrada",
+                cancel: "Cancelar",
+                export: "Exportar"
+            }
+        };
+
+        // Category translations
+        const categoryTranslations = {
+            en: {
+                income: ['Salary', 'Freelance', 'Investment', 'Business', 'Other'],
+                expense: ['Food', 'Transportation', 'Housing', 'Entertainment', 'Health', 'Shopping', 'Utilities', 'Other'],
+                debt: ['Credit Card', 'Student Loan', 'Mortgage', 'Personal Loan', 'Other'],
+                savings: ['Emergency Fund', 'Vacation', 'House', 'Car', 'Retirement', 'Other']
+            },
+            es: {
+                income: ['Salario', 'Freelance', 'Inversión', 'Negocio', 'Otro'],
+                expense: ['Comida', 'Transporte', 'Vivienda', 'Entretenimiento', 'Salud', 'Compras', 'Servicios', 'Otro'],
+                debt: ['Tarjeta de Crédito', 'Préstamo Estudiantil', 'Hipoteca', 'Préstamo Personal', 'Otro'],
+                savings: ['Fondo de Emergencia', 'Vacaciones', 'Casa', 'Auto', 'Jubilación', 'Otro']
+            }
+        };
+
+        // Data storage
+        let budgetData = {
+            income: JSON.parse(localStorage.getItem('income')) || [],
+            expenses: JSON.parse(localStorage.getItem('expenses')) || [],
+            debt: JSON.parse(localStorage.getItem('debt')) || [],
+            savings: JSON.parse(localStorage.getItem('savings')) || []
+        };
+
+        // Settings
+        let settings = {
+            language: localStorage.getItem('language') || 'en',
+            baseCurrency: localStorage.getItem('baseCurrency') || 'USD',
+            exchangeRate: parseFloat(localStorage.getItem('exchangeRate')) || 520
+        };
+
+        // Chart instances
+        let charts = {};
+        let currentModalType = '';
+        let currentView = 'list';
+
+        // Currency formatting
+        function formatCurrency(amount, currency) {
+            const symbols = { USD: '$', CRC: '₡' };
+            const symbol = symbols[currency] || currency;
+            return `${symbol}${amount.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+        }
+
+        // Currency conversion
+        function convertCurrency(amount, fromCurrency, toCurrency) {
+            if (fromCurrency === toCurrency) return amount;
+            
+            if (fromCurrency === 'USD' && toCurrency === 'CRC') {
+                return amount * settings.exchangeRate;
+            } else if (fromCurrency === 'CRC' && toCurrency === 'USD') {
+                return amount / settings.exchangeRate;
+            }
+            
+            return amount;
+        }
+
+        // Get amount in base currency
+        function getBaseAmount(amount, currency) {
+            return convertCurrency(amount, currency, settings.baseCurrency);
+        }
+
+        // Get amount in secondary currency  
+        function getSecondaryAmount(amount, currency) {
+            const secondaryCurrency = settings.baseCurrency === 'USD' ? 'CRC' : 'USD';
+            return convertCurrency(amount, currency, secondaryCurrency);
+        }
+
+        // Initialize the app
+        function init() {
+            applyLanguage();
+            updateCurrencyButtons();
+            updateDashboard();
+            renderAllLists();
+            
+            // Prevent scroll bounce on iOS
+            document.body.addEventListener('touchstart', function(e) {
+                if (e.target === document.body) {
+                    e.preventDefault();
+                }
+            }, { passive: false });
+            
+            document.body.addEventListener('touchend', function(e) {
+                if (e.target === document.body) {
+                    e.preventDefault();
+                }
+            }, { passive: false });
+            
+            document.body.addEventListener('touchmove', function(e) {
+                if (e.target === document.body) {
+                    e.preventDefault();
+                }
+            }, { passive: false });
+        }
+
+        // Language functions
+        function changeLanguage(lang) {
+            settings.language = lang;
+            localStorage.setItem('language', lang);
+            
+            document.getElementById('langEn').classList.toggle('active', lang === 'en');
+            document.getElementById('langEs').classList.toggle('active', lang === 'es');
+            
+            applyLanguage();
+            renderAllLists();
+        }
+
+        function applyLanguage() {
+            const elements = document.querySelectorAll('[data-translate]');
+            elements.forEach(element => {
+                const key = element.getAttribute('data-translate');
+                if (translations[settings.language][key]) {
+                    element.textContent = translations[settings.language][key];
+                }
+            });
+        }
+
+        // Currency functions
+        function changeBaseCurrency(currency) {
+            settings.baseCurrency = currency;
+            localStorage.setItem('baseCurrency', currency);
+            updateCurrencyButtons();
+            updateDashboard();
+            renderAllLists();
+        }
+
+        function updateCurrencyButtons() {
+            document.getElementById('currUSD').classList.toggle('active', settings.baseCurrency === 'USD');
+            document.getElementById('currCRC').classList.toggle('active', settings.baseCurrency === 'CRC');
+        }
+
+        function updateExchangeRate() {
+            const rate = parseFloat(document.getElementById('exchangeRate').value);
+            if (rate > 0) {
+                settings.exchangeRate = rate;
+                localStorage.setItem('exchangeRate', rate);
+                updateDashboard();
+                renderAllLists();
+            }
+        }
+
+        // Settings panel
+        function toggleSettings() {
+            const panel = document.getElementById('settingsPanel');
+            panel.classList.toggle('hidden');
+            
+            // Update exchange rate input
+            document.getElementById('exchangeRate').value = settings.exchangeRate;
+        }
+
+        // Close settings when clicking outside
+        document.addEventListener('click', function(e) {
+            const settingsPanel = document.getElementById('settingsPanel');
+            const settingsButton = e.target.closest('button[onclick="toggleSettings()"]');
+            
+            if (!settingsPanel.contains(e.target) && !settingsButton && !settingsPanel.classList.contains('hidden')) {
+                settingsPanel.classList.add('hidden');
+            }
+        });
+
+        // Switch between views
+        function switchView(view) {
+            currentView = view;
+            const listView = document.getElementById('listView');
+            const graphView = document.getElementById('graphView');
+            const navList = document.getElementById('navList');
+            const navGraph = document.getElementById('navGraph');
+
+            if (view === 'list') {
+                listView.classList.remove('hidden');
+                graphView.classList.add('hidden');
+                navList.classList.add('active');
+                navGraph.classList.remove('active');
+            } else {
+                listView.classList.add('hidden');
+                graphView.classList.remove('hidden');
+                navList.classList.remove('active');
+                navGraph.classList.add('active');
+                
+                // Render charts when switching to graph view
+                setTimeout(() => {
+                    renderCharts();
+                }, 100);
+            }
+        }
+
+        // Save data to localStorage
+        function saveData(type, data) {
+            localStorage.setItem(type, JSON.stringify(data));
+        }
+
+        // Open modal
+        function openModal(type) {
+            currentModalType = type;
+            const modal = document.getElementById('modal');
+            const title = document.getElementById('modalTitle');
+            const categorySelect = document.getElementById('category');
+            const targetAmountField = document.getElementById('targetAmountField');
+            const dateInput = document.getElementById('date');
+
+            // Set current date as default
+            dateInput.value = new Date().toISOString().split('T')[0];
+
+            // Update modal title
+            const titleKey = `add${type.charAt(0).toUpperCase() + type.slice(1)}`;
+            title.textContent = translations[settings.language][titleKey] || `Add ${type}`;
+
+            // Populate category options
+            const categories = categoryTranslations[settings.language][type];
+            categorySelect.innerHTML = categories.map(cat => 
+                `<option value="${cat}">${cat}</option>`
+            ).join('');
+
+            // Show/hide target amount field for savings
+            if (type === 'savings') {
+                targetAmountField.classList.remove('hidden');
+                document.getElementById('targetAmount').required = true;
+            } else {
+                targetAmountField.classList.add('hidden');
+                document.getElementById('targetAmount').required = false;
+            }
+
+            modal.classList.add('show');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Close modal
+        function closeModal() {
+            const modal = document.getElementById('modal');
+            modal.classList.remove('show');
+            document.body.style.overflow = '';
+            document.getElementById('entryForm').reset();
+        }
+
+        // Handle form submission
+        document.getElementById('entryForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const entry = {
+                id: Date.now(),
+                description: document.getElementById('description').value,
+                amount: parseFloat(document.getElementById('amount').value),
+                currency: document.getElementById('entryCurrency').value,
+                category: document.getElementById('category').value,
+                date: document.getElementById('date').value
+            };
+
+            if (currentModalType === 'savings') {
+                entry.targetAmount = parseFloat(document.getElementById('targetAmount').value);
+                entry.targetCurrency = document.getElementById('targetCurrency').value;
+            }
+
+            budgetData[currentModalType].push(entry);
+            saveData(currentModalType, budgetData[currentModalType]);
+            
+            updateDashboard();
+            renderList(currentModalType);
+            
+            // Update charts if in graph view
+            if (currentView === 'graph') {
+                renderCharts();
+            }
+            
+            closeModal();
+        });
+
+        // Update dashboard totals
+        function updateDashboard() {
+            const totals = {
+                income: { base: 0, secondary: 0 },
+                expenses: { base: 0, secondary: 0 },
+                savings: { base: 0, secondary: 0 },
+                debt: { base: 0, secondary: 0 }
+            };
+
+            // Calculate totals in both currencies
+            Object.keys(totals).forEach(type => {
+                budgetData[type].forEach(item => {
+                    const baseAmount = getBaseAmount(item.amount, item.currency);
+                    const secondaryAmount = getSecondaryAmount(item.amount, item.currency);
+                    
+                    totals[type].base += baseAmount;
+                    totals[type].secondary += secondaryAmount;
+                });
+            });
+
+            const totalBalance = totals.income.base - totals.expenses.base - totals.debt.base + totals.savings.base;
+            const totalBalanceSecondary = totals.income.secondary - totals.expenses.secondary - totals.debt.secondary + totals.savings.secondary;
+            
+            const secondaryCurrency = settings.baseCurrency === 'USD' ? 'CRC' : 'USD';
+
+            // Update display
+            document.getElementById('totalBalance').textContent = formatCurrency(totalBalance, settings.baseCurrency);
+            document.getElementById('totalBalanceSecondary').textContent = formatCurrency(totalBalanceSecondary, secondaryCurrency);
+            
+            document.getElementById('totalIncome').textContent = formatCurrency(totals.income.base, settings.baseCurrency);
+            document.getElementById('totalIncomeSecondary').textContent = formatCurrency(totals.income.secondary, secondaryCurrency);
+            
+            document.getElementById('totalExpenses').textContent = formatCurrency(totals.expenses.base, settings.baseCurrency);
+            document.getElementById('totalExpensesSecondary').textContent = formatCurrency(totals.expenses.secondary, secondaryCurrency);
+            
+            document.getElementById('totalSavings').textContent = formatCurrency(totals.savings.base, settings.baseCurrency);
+            document.getElementById('totalSavingsSecondary').textContent = formatCurrency(totals.savings.secondary, secondaryCurrency);
+        }
+
+        // Render all lists
+        function renderAllLists() {
+            renderList('income');
+            renderList('expenses');
+            renderList('debt');
+            renderList('savings');
+        }
+
+        // Render individual list
+        function renderList(type) {
+            const container = document.getElementById(`${type}List`) || document.getElementById(`${type.slice(0, -1)}List`);
+            const data = budgetData[type];
+
+            if (data.length === 0) {
+                const emptyStateKeys = {
+                    income: { text: 'noIncomeEntries', subtext: 'addFirstIncome' },
+                    expenses: { text: 'noExpensesRecorded', subtext: 'trackSpending' },
+                    debt: { text: 'noDebtsTracked', subtext: 'monitorDebts' },
+                    savings: { text: 'noSavingsGoals', subtext: 'startSaving' }
+                };
+                
+                const icons = {
+                    income: 'fas fa-wallet',
+                    expenses: 'fas fa-shopping-cart', 
+                    debt: 'fas fa-handshake',
+                    savings: 'fas fa-target'
+                };
+                
+                const empty = emptyStateKeys[type];
+                container.innerHTML = `
+                    <div class="text-center text-gray-500 py-8">
+                        <i class="${icons[type]} text-4xl mb-3 text-gray-300"></i>
+                        <p>${translations[settings.language][empty.text]}</p>
+                        <p class="text-sm">${translations[settings.language][empty.subtext]}</p>
+                    </div>
+                `;
+                return;
+            }
+
+            // Sort by date (newest first)
+            const sortedData = [...data].sort((a, b) => new Date(b.date) - new Date(a.date));
+            
+            if (type === 'savings') {
+                container.innerHTML = sortedData.map(item => {
+                    const targetInSameCurrency = item.targetCurrency ? 
+                        convertCurrency(item.targetAmount, item.targetCurrency, item.currency) : 
+                        item.targetAmount;
+                    
+                    const progress = Math.min((item.amount / targetInSameCurrency) * 100, 100);
+                    
+                    return `
+                        <div class="savings-item p-4 border border-gray-200 rounded-lg">
+                            <div class="flex justify-between items-start mb-2">
+                                <div class="flex-1">
+                                    <h4 class="font-medium text-gray-900">${item.description}</h4>
+                                    <p class="text-sm text-gray-500">${item.category}</p>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <span class="currency-badge">${item.currency}</span>
+                                    <button onclick="deleteEntry('${type}', ${item.id})" class="touch-target text-red-500 hover:text-red-700">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="mb-2">
+                                <div class="flex justify-between text-sm mb-1">
+                                    <span>${formatCurrency(item.amount, item.currency)} of ${formatCurrency(item.targetAmount, item.targetCurrency || item.currency)}</span>
+                                    <span>${progress.toFixed(1)}%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div class="progress-bar" style="width: ${progress}%"></div>
+                                </div>
+                            </div>
+                            <p class="text-xs text-gray-400">${new Date(item.date).toLocaleDateString()}</p>
+                        </div>
+                    `;
+                }).join('');
+            } else if (type === 'debt') {
+                container.innerHTML = sortedData.map(item => `
+                    <div class="debt-item p-4 border border-gray-200 rounded-lg">
+                        <div class="flex justify-between items-start">
+                            <div class="flex-1">
+                                <h4 class="font-medium text-gray-900">${item.description}</h4>
+                                <p class="text-sm text-gray-500">${item.category}</p>
+                                <p class="text-lg font-bold text-yellow-600 mt-1">${formatCurrency(item.amount, item.currency)}</p>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <span class="currency-badge">${item.currency}</span>
+                                <button onclick="deleteEntry('${type}', ${item.id})" class="touch-target text-red-500 hover:text-red-700">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <p class="text-xs text-gray-400 mt-2">${new Date(item.date).toLocaleDateString()}</p>
+                    </div>
+                `).join('');
+            } else {
+                const colorClass = type === 'income' ? 'text-green-600' : 'text-red-600';
+                const itemClass = type === 'income' ? 'income-item' : 'expense-item';
+                
+                container.innerHTML = sortedData.map(item => `
+                    <div class="${itemClass} flex justify-between items-center p-3 border border-gray-200 rounded-lg">
+                        <div class="flex-1">
+                            <h4 class="font-medium text-gray-900">${item.description}</h4>
+                            <p class="text-sm text-gray-500">${item.category} • ${new Date(item.date).toLocaleDateString()}</p>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <span class="font-bold ${colorClass}">${formatCurrency(item.amount, item.currency)}</span>
+                            <span class="currency-badge">${item.currency}</span>
+                            <button onclick="deleteEntry('${type}', ${item.id})" class="touch-target text-red-500 hover:text-red-700">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                    </div>
+                `).join('');
+            }
+        }
+
+        // Delete entry
+        function deleteEntry(type, id) {
+            const confirmMessage = settings.language === 'es' ? 
+                '¿Estás seguro de que quieres eliminar esta entrada?' : 
+                'Are you sure you want to delete this entry?';
+                
+            if (confirm(confirmMessage)) {
+                budgetData[type] = budgetData[type].filter(item => item.id !== id);
+                saveData(type, budgetData[type]);
+                updateDashboard();
+                renderList(type);
+                
+                // Update charts if in graph view
+                if (currentView === 'graph') {
+                    renderCharts();
+                }
+            }
+        }
+
+        // Export data functionality
+        function exportData() {
+            const dataToExport = {
+                ...budgetData,
+                settings,
+                exportDate: new Date().toISOString()
+            };
+            
+            const dataStr = JSON.stringify(dataToExport, null, 2);
+            const dataBlob = new Blob([dataStr], {type: 'application/json'});
+            
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(dataBlob);
+            link.download = `budget-tracker-${new Date().toISOString().split('T')[0]}.json`;
+            link.click();
+        }
+
+        // Render all charts
+        function renderCharts() {
+            renderIncomeExpenseChart();
+            renderExpenseCategoryChart();
+            renderMonthlyTotalsChart();
+            renderSavingsProgressChart();
+        }
+
+        // Income vs Expenses trend chart
+        function renderIncomeExpenseChart() {
+            const ctx = document.getElementById('incomeExpenseChart').getContext('2d');
+            
+            if (charts.incomeExpense) {
+                charts.incomeExpense.destroy();
+            }
+
+            // Group data by month (convert all to base currency)
+            const monthlyData = {};
+            
+            [...budgetData.income, ...budgetData.expenses].forEach(item => {
+                const month = new Date(item.date).toLocaleDateString('en-US', { year: 'numeric', month: 'short' });
+                if (!monthlyData[month]) {
+                    monthlyData[month] = { income: 0, expenses: 0 };
+                }
+                
+                const baseAmount = getBaseAmount(item.amount, item.currency);
+                
+                if (budgetData.income.includes(item)) {
+                    monthlyData[month].income += baseAmount;
+                } else {
+                    monthlyData[month].expenses += baseAmount;
+                }
+            });
+
+            const months = Object.keys(monthlyData).sort();
+            const incomeData = months.map(month => monthlyData[month].income);
+            const expenseData = months.map(month => monthlyData[month].expenses);
+
+            const labels = {
+                en: { income: 'Income', expenses: 'Expenses' },
+                es: { income: 'Ingresos', expenses: 'Gastos' }
+            };
+
+            charts.incomeExpense = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: months,
+                    datasets: [{
+                        label: labels[settings.language].income,
+                        data: incomeData,
+                        borderColor: '#10b981',
+                        backgroundColor: 'rgba(16, 185, 129, 0.1)',
+                        tension: 0.4,
+                        pointRadius: 4,
+                        pointHoverRadius: 6
+                    }, {
+                        label: labels[settings.language].expenses,
+                        data: expenseData,
+                        borderColor: '#ef4444',
+                        backgroundColor: 'rgba(239, 68, 68, 0.1)',
+                        tension: 0.4,
+                        pointRadius: 4,
+                        pointHoverRadius: 6
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'top'
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                callback: function(value) {
+                                    return formatCurrency(value, settings.baseCurrency);
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        // Expense categories pie chart
+        function renderExpenseCategoryChart() {
+            const ctx = document.getElementById('expenseCategoryChart').getContext('2d');
+            
+            if (charts.expenseCategory) {
+                charts.expenseCategory.destroy();
+            }
+
+            // Group expenses by category (convert all to base currency)
+            const categoryData = {};
+            budgetData.expenses.forEach(item => {
+                const baseAmount = getBaseAmount(item.amount, item.currency);
+                categoryData[item.category] = (categoryData[item.category] || 0) + baseAmount;
+            });
+
+            const labels = Object.keys(categoryData);
+            const data = Object.values(categoryData);
+            const colors = [
+                '#ef4444', '#f59e0b', '#10b981', '#3b82f6',
+                '#8b5cf6', '#f97316', '#06b6d4', '#84cc16'
+            ];
+
+            charts.expenseCategory = new Chart(ctx, {
+                type: 'pie',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        data: data,
+                        backgroundColor: colors.slice(0, labels.length)
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom'
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    const total = context.dataset.data.reduce((a, b) => a + b, 0);
+                                    const percentage = ((context.raw / total) * 100).toFixed(1);
+                                    return context.label + ': ' + formatCurrency(context.raw, settings.baseCurrency) + ' (' + percentage + '%)';
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        // Monthly totals bar chart
+        function renderMonthlyTotalsChart() {
+            const ctx = document.getElementById('monthlyTotalsChart').getContext('2d');
+            
+            if (charts.monthlyTotals) {
+                charts.monthlyTotals.destroy();
+            }
+
+            // Group data by month (convert all to base currency)
+            const monthlyData = {};
+            
+            [...budgetData.income, ...budgetData.expenses, ...budgetData.savings].forEach(item => {
+                const month = new Date(item.date).toLocaleDateString('en-US', { year: 'numeric', month: 'short' });
+                if (!monthlyData[month]) {
+                    monthlyData[month] = { income: 0, expenses: 0, savings: 0 };
+                }
+                
+                const baseAmount = getBaseAmount(item.amount, item.currency);
+                
+                if (budgetData.income.includes(item)) {
+                    monthlyData[month].income += baseAmount;
+                } else if (budgetData.expenses.includes(item)) {
+                    monthlyData[month].expenses += baseAmount;
+                } else if (budgetData.savings.includes(item)) {
+                    monthlyData[month].savings += baseAmount;
+                }
+            });
+
+            const months = Object.keys(monthlyData).sort();
+            const incomeData = months.map(month => monthlyData[month].income);
+            const expenseData = months.map(month => monthlyData[month].expenses);
+            const savingsData = months.map(month => monthlyData[month].savings);
+
+            const labels = {
+                en: { income: 'Income', expenses: 'Expenses', savings: 'Savings' },
+                es: { income: 'Ingresos', expenses: 'Gastos', savings: 'Ahorros' }
+            };
+
+            charts.monthlyTotals = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: months,
+                    datasets: [{
+                        label: labels[settings.language].income,
+                        data: incomeData,
+                        backgroundColor: '#10b981'
+                    }, {
+                        label: labels[settings.language].expenses,
+                        data: expenseData,
+                        backgroundColor: '#ef4444'
+                    }, {
+                        label: labels[settings.language].savings,
+                        data: savingsData,
+                        backgroundColor: '#8b5cf6'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'top'
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                callback: function(value) {
+                                    return formatCurrency(value, settings.baseCurrency);
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        // Savings progress chart
+        function renderSavingsProgressChart() {
+            const ctx = document.getElementById('savingsProgressChart').getContext('2d');
+            
+            if (charts.savingsProgress) {
+                charts.savingsProgress.destroy();
+            }
+
+            const labels = budgetData.savings.map(item => item.description);
+            const currentAmounts = budgetData.savings.map(item => getBaseAmount(item.amount, item.currency));
+            const targetAmounts = budgetData.savings.map(item => {
+                const targetCurrency = item.targetCurrency || item.currency;
+                return getBaseAmount(item.targetAmount, targetCurrency);
+            });
+
+            const chartLabels = {
+                en: { current: 'Current Amount', target: 'Target Amount' },
+                es: { current: 'Cantidad Actual', target: 'Cantidad Objetivo' }
+            };
+
+            charts.savingsProgress = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: chartLabels[settings.language].current,
+                        data: currentAmounts,
+                        backgroundColor: '#8b5cf6'
+                    }, {
+                        label: chartLabels[settings.language].target,
+                        data: targetAmounts,
+                        backgroundColor: '#e5e7eb'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'top'
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                callback: function(value) {
+                                    return formatCurrency(value, settings.baseCurrency);
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        // Initialize the app when page loads
+        document.addEventListener('DOMContentLoaded', init);
+
+        // Service Worker Registration
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register(URL.createObjectURL(new Blob([`
+                    const CACHE_NAME = 'budget-tracker-v1';
+                    const urlsToCache = [
+                        './',
+                        'https://cdn.tailwindcss.com',
+                        'https://cdn.jsdelivr.net/npm/chart.js',
+                        'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css'
+                    ];
+
+                    self.addEventListener('install', function(event) {
+                        event.waitUntil(
+                            caches.open(CACHE_NAME)
+                                .then(function(cache) {
+                                    return cache.addAll(urlsToCache);
+                                })
+                        );
+                    });
+
+                    self.addEventListener('fetch', function(event) {
+                        event.respondWith(
+                            caches.match(event.request)
+                                .then(function(response) {
+                                    if (response) {
+                                        return response;
+                                    }
+                                    return fetch(event.request);
+                                })
+                        );
+                    });
+                `], { type: 'application/javascript' })))
+                .then(function(registration) {
+                    console.log('ServiceWorker registration successful');
+                }, function(err) {
+                    console.log('ServiceWorker registration failed: ', err);
+                });
+            });
+        }
+    </script>
+</body>
+</html>
+
