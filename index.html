@@ -10,20 +10,20 @@
     
     <!-- iOS PWA Meta Tags -->
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="Budget Tracker">
-    <meta name="theme-color" content="#2563eb">
+    <meta name="theme-color" content="#1f2937">
     
     <!-- App Icons -->
-    <link rel="apple-touch-icon" sizes="180x180" href="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/42359127-3c98-4ea4-b0c8-165f23f92270.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/edf23dda-89cb-42e7-8a61-fa485f89a28a.png">
-    <link rel="apple-touch-icon" sizes="144x144" href="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/d750438b-32c7-4b13-b323-29f0bd200271.png">
-    <link rel="apple-touch-icon" sizes="120x120" href="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/2cd68cdf-3632-4135-b251-559d5ecb4287.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/a2dab85d-b1b7-4902-875a-7b549e65fb5c.png">
-    <link rel="apple-touch-icon" sizes="76x76" href="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/838a0f6b-960f-49fb-b01a-373313a3bd3a.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/fba7b449-b681-4605-b1f8-f610de38fe72.png">
-    <link rel="apple-touch-icon" sizes="60x60" href="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/a3f8eb63-ad7e-42e1-9fa8-e0c7e37a73db.png">
-    <link rel="apple-touch-icon" sizes="57x57" href="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/d6996f12-d8e6-4482-b528-7adc5f3c29ff.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/c8c21e24-a8e6-426f-b846-b3255ce82e19.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/634d4e48-7cd1-4106-a5e9-753504e266b5.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/58b9afd3-eb1a-49c2-84df-ad0880726c0e.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/c898378f-fca0-49d4-8ee7-54a8bed76a1e.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/292bfefc-b37c-4d1c-aeac-f96924e09637.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/29a7f060-5782-43da-8efc-b90ed1bdbefa.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/789b00ff-0ec2-4e7d-8691-3b4f29b37a31.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/68b0d854-44bb-4443-9a21-9ab9b6b8523b.png">
+    <link rel="apple-touch-icon" sizes="57x57" href="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/6e352438-188a-468a-b490-0859f05bad13.png">
     
     <!-- Web App Manifest -->
     <link rel="manifest" id="app-manifest">
@@ -50,17 +50,19 @@
             padding-left: env(safe-area-inset-left);
             padding-right: env(safe-area-inset-right);
             overscroll-behavior: none;
+            background: #111827;
+            color: #f9fafb;
         }
         
         .notion-card {
-            background: white;
+            background: #1f2937;
             border-radius: 12px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-            border: 1px solid #e5e7eb;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            border: 1px solid #374151;
         }
         
         .notion-button {
-            background: #2563eb;
+            background: #3b82f6;
             color: white;
             border: none;
             border-radius: 8px;
@@ -71,18 +73,12 @@
         }
         
         .notion-button:hover, .notion-button:focus {
-            background: #1d4ed8;
+            background: #2563eb;
             transform: translateY(-1px);
         }
         
         .notion-button:active {
             transform: translateY(0);
-        }
-        
-        .modal-backdrop {
-            background: rgba(0, 0, 0, 0.6);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
         }
         
         .progress-bar {
@@ -92,8 +88,15 @@
             transition: width 0.3s ease;
         }
         
+        .debt-progress-bar {
+            background: linear-gradient(90deg, #f59e0b, #d97706);
+            border-radius: 6px;
+            height: 8px;
+            transition: width 0.3s ease;
+        }
+        
         .expense-item:hover, .income-item:hover, .debt-item:hover, .savings-item:hover {
-            background: #f9fafb;
+            background: #374151;
             transform: translateY(-1px);
             transition: all 0.2s;
         }
@@ -119,31 +122,6 @@
             background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
         }
         
-        .view-toggle {
-            background: #f3f4f6;
-            border-radius: 10px;
-            padding: 4px;
-            display: flex;
-            gap: 4px;
-        }
-        
-        .view-toggle button {
-            padding: 10px 14px;
-            border-radius: 8px;
-            font-weight: 500;
-            transition: all 0.2s;
-            border: none;
-            background: transparent;
-            color: #6b7280;
-            font-size: 14px;
-        }
-        
-        .view-toggle button.active {
-            background: white;
-            color: #1f2937;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-        
         .chart-container {
             position: relative;
             height: 280px;
@@ -164,7 +142,7 @@
         }
         
         .settings-toggle {
-            background: #f3f4f6;
+            background: #374151;
             border-radius: 8px;
             padding: 2px;
             display: flex;
@@ -178,19 +156,19 @@
             transition: all 0.2s;
             border: none;
             background: transparent;
-            color: #6b7280;
+            color: #9ca3af;
             font-size: 0.875rem;
         }
         
         .settings-toggle button.active {
-            background: white;
-            color: #1f2937;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            background: #1f2937;
+            color: #f9fafb;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
         }
         
         .currency-badge {
-            background: #e5e7eb;
-            color: #374151;
+            background: #374151;
+            color: #d1d5db;
             padding: 4px 8px;
             border-radius: 6px;
             font-size: 0.75rem;
@@ -201,10 +179,10 @@
             position: absolute;
             top: 100%;
             right: 0;
-            background: white;
-            border: 1px solid #e5e7eb;
+            background: #1f2937;
+            border: 1px solid #374151;
             border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
             padding: 20px;
             min-width: 280px;
             z-index: 1000;
@@ -213,11 +191,11 @@
         .mobile-header {
             position: sticky;
             top: 0;
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(17, 24, 39, 0.95);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             z-index: 100;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            border-bottom: 1px solid #374151;
         }
         
         .mobile-modal {
@@ -226,7 +204,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: white;
+            background: #111827;
             z-index: 9999;
             display: flex;
             flex-direction: column;
@@ -240,11 +218,11 @@
         
         .mobile-modal-header {
             padding: 16px 20px;
-            border-bottom: 1px solid #e5e7eb;
+            border-bottom: 1px solid #374151;
             display: flex;
-            justify-content: between;
+            justify-content: space-between;
             align-items: center;
-            background: #f9fafb;
+            background: #1f2937;
         }
         
         .mobile-modal-content {
@@ -267,7 +245,7 @@
             gap: 12px;
         }
         
-        @media (min-width: 640px) {
+        @media (min-width: 640sm) {
             .quick-action-grid {
                 grid-template-columns: repeat(4, 1fr);
             }
@@ -296,10 +274,10 @@
             bottom: 0;
             left: 0;
             right: 0;
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(17, 24, 39, 0.95);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            border-top: 1px solid rgba(0, 0, 0, 0.1);
+            border-top: 1px solid #374151;
             padding: 8px 0;
             padding-bottom: env(safe-area-inset-bottom, 8px);
             z-index: 100;
@@ -312,14 +290,14 @@
             padding: 8px 12px;
             border-radius: 8px;
             transition: all 0.2s;
-            color: #6b7280;
+            color: #9ca3af;
             font-size: 12px;
             font-weight: 500;
         }
         
         .nav-item.active {
-            color: #2563eb;
-            background: rgba(37, 99, 235, 0.1);
+            color: #3b82f6;
+            background: rgba(59, 130, 246, 0.1);
         }
         
         .nav-item i {
@@ -336,14 +314,14 @@
             bottom: 90px;
             left: 16px;
             right: 16px;
-            background: #2563eb;
+            background: #3b82f6;
             color: white;
             padding: 16px;
             border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            box-shadow: 0 4px 20px rgba(37, 99, 235, 0.3);
+            box-shadow: 0 4px 20px rgba(59, 130, 246, 0.3);
             transform: translateY(200px);
             transition: transform 0.3s ease;
             z-index: 1000;
@@ -353,10 +331,154 @@
             transform: translateY(0);
         }
         
+        input, select, textarea {
+            background: #374151 !important;
+            border-color: #4b5563 !important;
+            color: #f9fafb !important;
+        }
+        
+        input:focus, select:focus, textarea:focus {
+            border-color: #3b82f6 !important;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1) !important;
+        }
+        
+        .month-filter {
+            background: #374151;
+            border-radius: 8px;
+            padding: 4px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 16px;
+        }
+        
+        .month-filter select {
+            background: #1f2937 !important;
+            border: 1px solid #4b5563 !important;
+            border-radius: 6px !important;
+            padding: 8px 12px !important;
+            color: #f9fafb !important;
+            font-size: 14px;
+        }
+        
+        .month-filter label {
+            color: #d1d5db;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        
         @media (display-mode: standalone) {
             .install-prompt {
                 display: none;
             }
+        }
+        
+        .empty-state {
+            color: #6b7280;
+        }
+        
+        .empty-state i {
+            color: #4b5563;
+        }
+        
+        h1, h2, h3, h4 {
+            color: #f9fafb;
+        }
+        
+        .text-gray-900 {
+            color: #f9fafb !important;
+        }
+        
+        .text-gray-500 {
+            color: #9ca3af !important;
+        }
+        
+        .text-gray-700 {
+            color: #d1d5db !important;
+        }
+        
+        .border-gray-200 {
+            border-color: #374151 !important;
+        }
+        
+        .border-gray-300 {
+            border-color: #4b5563 !important;
+        }
+        
+        .bg-gray-50 {
+            background: #111827 !important;
+        }
+        
+        .hover\:bg-gray-50:hover {
+            background: #374151 !important;
+        }
+        
+        .hover\:bg-gray-100:hover {
+            background: #374151 !important;
+        }
+        
+        .bg-gray-100 {
+            background: #374151 !important;
+        }
+        
+        .debt-summary-card {
+            background: #2d3748;
+            border: 1px solid #4a5568;
+            border-radius: 8px;
+            padding: 12px;
+            margin-bottom: 16px;
+        }
+        
+        .contribution-button {
+            background: #48bb78;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            padding: 6px 12px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: all 0.2s;
+            touch-action: manipulation;
+        }
+        
+        .contribution-button:hover {
+            background: #38a169;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .type-list {
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        
+        .type-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px;
+            border: 1px solid #4b5563;
+            border-radius: 8px;
+            margin-bottom: 8px;
+            background: #374151;
+        }
+        
+        .add-type-form {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 16px;
+        }
+        
+        .secondary-amount {
+            font-size: 0.75rem;
+            color: #9ca3af;
+            margin-top: 2px;
         }
     </style>
 </head>
@@ -374,7 +496,7 @@
                 <div class="flex items-center space-x-2">
                     <!-- Settings -->
                     <div class="relative">
-                        <button onclick="toggleSettings()" class="touch-target text-gray-500 hover:text-gray-700 rounded-lg hover:bg-gray-100">
+                        <button onclick="toggleSettings()" class="touch-target text-gray-500 hover:text-gray-300 rounded-lg hover:bg-gray-100">
                             <i class="fas fa-cog text-lg"></i>
                         </button>
                         <div id="settingsPanel" class="settings-panel hidden">
@@ -412,6 +534,17 @@
 
     <div class="content-with-nav">
         <div class="px-4 py-6">
+            <!-- Month Filter -->
+            <div class="notion-card p-4 mb-6">
+                <div class="month-filter">
+                    <label data-translate="filterByMonth">Filter by Month:</label>
+                    <select id="monthFilter" onchange="filterByMonth()">
+                        <option value="all" data-translate="allMonths">All Months</option>
+                    </select>
+                    <button onclick="clearFilter()" class="text-sm text-blue-400 hover:text-blue-300 ml-2" data-translate="clearFilter">Clear</button>
+                </div>
+            </div>
+
             <!-- Dashboard Overview -->
             <div class="grid grid-cols-2 gap-4 mb-6">
                 <!-- Total Balance Card -->
@@ -450,15 +583,15 @@
                     </div>
                 </div>
 
-                <!-- Savings Card -->
-                <div class="notion-card savings-card p-4">
+                <!-- Debt Card -->
+                <div class="notion-card debt-card p-4">
                     <div class="flex items-center justify-between">
                         <div>
-                            <p class="text-white/80 text-xs font-medium" data-translate="savings">Savings</p>
-                            <p class="text-lg font-bold text-white" id="totalSavings">$0.00</p>
-                            <p class="text-xs text-white/60" id="totalSavingsSecondary"></p>
+                            <p class="text-white/80 text-xs font-medium" data-translate="totalDebt">Total Debt</p>
+                            <p class="text-lg font-bold text-white" id="totalDebt">$0.00</p>
+                            <p class="text-xs text-white/60" id="totalDebtSecondary"></p>
                         </div>
-                        <i class="fas fa-piggy-bank text-white/60 text-xl"></i>
+                        <i class="fas fa-credit-card text-white/60 text-xl"></i>
                     </div>
                 </div>
             </div>
@@ -491,21 +624,21 @@
                 <div class="space-y-6">
                     <!-- Income Section -->
                     <div class="notion-card">
-                        <div class="p-4 border-b">
+                        <div class="p-4 border-b border-gray-200">
                             <div class="flex items-center justify-between">
                                 <h3 class="text-lg font-semibold text-gray-900 flex items-center">
-                                    <i class="fas fa-arrow-up text-green-600 mr-2"></i>
+                                    <i class="fas fa-arrow-up text-green-500 mr-2"></i>
                                     <span data-translate="recentIncome">Recent Income</span>
                                 </h3>
-                                <button onclick="openModal('income')" class="text-blue-600 hover:text-blue-700 text-sm font-medium touch-target">
+                                <button onclick="openModal('income')" class="text-blue-400 hover:text-blue-300 text-sm font-medium touch-target">
                                     + <span data-translate="addIncome">Add Income</span>
                                 </button>
                             </div>
                         </div>
                         <div class="p-4">
                             <div id="incomeList" class="space-y-3 max-h-64 overflow-y-auto">
-                                <div class="text-center text-gray-500 py-8">
-                                    <i class="fas fa-wallet text-4xl mb-3 text-gray-300"></i>
+                                <div class="text-center empty-state py-8">
+                                    <i class="fas fa-wallet text-4xl mb-3"></i>
                                     <p data-translate="noIncomeEntries">No income entries yet</p>
                                     <p class="text-sm" data-translate="addFirstIncome">Add your first income source</p>
                                 </div>
@@ -515,21 +648,21 @@
 
                     <!-- Expenses Section -->
                     <div class="notion-card">
-                        <div class="p-4 border-b">
+                        <div class="p-4 border-b border-gray-200">
                             <div class="flex items-center justify-between">
                                 <h3 class="text-lg font-semibold text-gray-900 flex items-center">
-                                    <i class="fas fa-arrow-down text-red-600 mr-2"></i>
+                                    <i class="fas fa-arrow-down text-red-500 mr-2"></i>
                                     <span data-translate="recentExpenses">Recent Expenses</span>
                                 </h3>
-                                <button onclick="openModal('expense')" class="text-blue-600 hover:text-blue-700 text-sm font-medium touch-target">
+                                <button onclick="openModal('expense')" class="text-blue-400 hover:text-blue-300 text-sm font-medium touch-target">
                                     + <span data-translate="addExpense">Add Expense</span>
                                 </button>
                             </div>
                         </div>
                         <div class="p-4">
                             <div id="expensesList" class="space-y-3 max-h-64 overflow-y-auto">
-                                <div class="text-center text-gray-500 py-8">
-                                    <i class="fas fa-shopping-cart text-4xl mb-3 text-gray-300"></i>
+                                <div class="text-center empty-state py-8">
+                                    <i class="fas fa-shopping-cart text-4xl mb-3"></i>
                                     <p data-translate="noExpensesRecorded">No expenses recorded</p>
                                     <p class="text-sm" data-translate="trackSpending">Track your spending</p>
                                 </div>
@@ -539,21 +672,24 @@
 
                     <!-- Debt Section -->
                     <div class="notion-card">
-                        <div class="p-4 border-b">
+                        <div class="p-4 border-b border-gray-200">
                             <div class="flex items-center justify-between">
                                 <h3 class="text-lg font-semibold text-gray-900 flex items-center">
-                                    <i class="fas fa-credit-card text-yellow-600 mr-2"></i>
+                                    <i class="fas fa-credit-card text-yellow-500 mr-2"></i>
                                     <span data-translate="debtTracking">Debt Tracking</span>
                                 </h3>
-                                <button onclick="openModal('debt')" class="text-blue-600 hover:text-blue-700 text-sm font-medium touch-target">
+                                <button onclick="openModal('debt')" class="text-blue-400 hover:text-blue-300 text-sm font-medium touch-target">
                                     + <span data-translate="addDebt">Add Debt</span>
                                 </button>
                             </div>
                         </div>
                         <div class="p-4">
+                            <!-- Debt Summary by Category -->
+                            <div id="debtSummary" class="mb-4"></div>
+                            
                             <div id="debtList" class="space-y-4 max-h-64 overflow-y-auto">
-                                <div class="text-center text-gray-500 py-8">
-                                    <i class="fas fa-handshake text-4xl mb-3 text-gray-300"></i>
+                                <div class="text-center empty-state py-8">
+                                    <i class="fas fa-handshake text-4xl mb-3"></i>
                                     <p data-translate="noDebtsTracked">No debts tracked</p>
                                     <p class="text-sm" data-translate="monitorDebts">Monitor your debts</p>
                                 </div>
@@ -563,21 +699,21 @@
 
                     <!-- Savings Section -->
                     <div class="notion-card">
-                        <div class="p-4 border-b">
+                        <div class="p-4 border-b border-gray-200">
                             <div class="flex items-center justify-between">
                                 <h3 class="text-lg font-semibold text-gray-900 flex items-center">
-                                    <i class="fas fa-piggy-bank text-purple-600 mr-2"></i>
+                                    <i class="fas fa-piggy-bank text-purple-500 mr-2"></i>
                                     <span data-translate="savingsGoals">Savings Goals</span>
                                 </h3>
-                                <button onclick="openModal('savings')" class="text-blue-600 hover:text-blue-700 text-sm font-medium touch-target">
+                                <button onclick="openModal('savings')" class="text-blue-400 hover:text-blue-300 text-sm font-medium touch-target">
                                     + <span data-translate="addSavings">Add Savings</span>
                                 </button>
                             </div>
                         </div>
                         <div class="p-4">
                             <div id="savingsList" class="space-y-4 max-h-64 overflow-y-auto">
-                                <div class="text-center text-gray-500 py-8">
-                                    <i class="fas fa-target text-4xl mb-3 text-gray-300"></i>
+                                <div class="text-center empty-state py-8">
+                                    <i class="fas fa-target text-4xl mb-3"></i>
                                     <p data-translate="noSavingsGoals">No savings goals set</p>
                                     <p class="text-sm" data-translate="startSaving">Start saving for your goals</p>
                                 </div>
@@ -593,7 +729,7 @@
                     <!-- Income vs Expenses Chart -->
                     <div class="notion-card p-4">
                         <h3 class="text-lg font-semibold text-gray-900 mb-4 flex items-center">
-                            <i class="fas fa-chart-line text-blue-600 mr-2"></i>
+                            <i class="fas fa-chart-line text-blue-500 mr-2"></i>
                             <span data-translate="incomeExpensesTrend">Income vs Expenses Trend</span>
                         </h3>
                         <div class="chart-container">
@@ -604,7 +740,7 @@
                     <!-- Expense Categories Pie Chart -->
                     <div class="notion-card p-4">
                         <h3 class="text-lg font-semibold text-gray-900 mb-4 flex items-center">
-                            <i class="fas fa-chart-pie text-red-600 mr-2"></i>
+                            <i class="fas fa-chart-pie text-red-500 mr-2"></i>
                             <span data-translate="expenseCategories">Expense Categories</span>
                         </h3>
                         <div class="chart-container">
@@ -615,7 +751,7 @@
                     <!-- Monthly Totals Bar Chart -->
                     <div class="notion-card p-4">
                         <h3 class="text-lg font-semibold text-gray-900 mb-4 flex items-center">
-                            <i class="fas fa-chart-bar text-green-600 mr-2"></i>
+                            <i class="fas fa-chart-bar text-green-500 mr-2"></i>
                             <span data-translate="monthlyTotals">Monthly Totals</span>
                         </h3>
                         <div class="chart-container">
@@ -623,15 +759,97 @@
                         </div>
                     </div>
 
-                    <!-- Savings Progress -->
+                    <!-- Debt Progress Chart -->
                     <div class="notion-card p-4">
                         <h3 class="text-lg font-semibold text-gray-900 mb-4 flex items-center">
-                            <i class="fas fa-target text-purple-600 mr-2"></i>
-                            <span data-translate="savingsProgress">Savings Progress</span>
+                            <i class="fas fa-chart-bar text-yellow-500 mr-2"></i>
+                            <span data-translate="debtProgress">Debt Progress</span>
                         </h3>
                         <div class="chart-container">
-                            <canvas id="savingsProgressChart"></canvas>
+                            <canvas id="debtProgressChart"></canvas>
                         </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Types Management View -->
+            <div id="typesView" class="hidden fade-in">
+                <div class="space-y-6">
+                    <!-- Category Types Management -->
+                    <div class="notion-card p-4">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-4 flex items-center">
+                            <i class="fas fa-tags text-blue-500 mr-2"></i>
+                            <span data-translate="manageCategories">Manage Categories</span>
+                        </h3>
+                        
+                        <!-- Category Type Tabs -->
+                        <div class="settings-toggle mb-4">
+                            <button onclick="switchCategoryTab('income')" id="tabIncome" class="active">Income</button>
+                            <button onclick="switchCategoryTab('expense')" id="tabExpense">Expenses</button>
+                            <button onclick="switchCategoryTab('debt')" id="tabDebt">Debt</button>
+                            <button onclick="switchCategoryTab('savings')" id="tabSavings">Savings</button>
+                        </div>
+
+                        <!-- Income Categories -->
+                        <div id="incomeCategories" class="tab-content active">
+                            <div class="add-type-form">
+                                <input type="text" id="newIncomeCategory" placeholder="New income category" class="flex-1 border border-gray-300 rounded-lg px-3 py-2">
+                                <button onclick="addCategory('income')" class="notion-button">Add</button>
+                            </div>
+                            <div id="incomeCategoryList" class="type-list"></div>
+                        </div>
+
+                        <!-- Expense Categories -->
+                        <div id="expenseCategories" class="tab-content">
+                            <div class="add-type-form">
+                                <input type="text" id="newExpenseCategory" placeholder="New expense category" class="flex-1 border border-gray-300 rounded-lg px-3 py-2">
+                                <button onclick="addCategory('expense')" class="notion-button">Add</button>
+                            </div>
+                            <div id="expenseCategoryList" class="type-list"></div>
+                        </div>
+
+                        <!-- Debt Categories -->
+                        <div id="debtCategories" class="tab-content">
+                            <div class="add-type-form">
+                                <input type="text" id="newDebtCategory" placeholder="New debt category" class="flex-1 border border-gray-300 rounded-lg px-3 py-2">
+                                <button onclick="addCategory('debt')" class="notion-button">Add</button>
+                            </div>
+                            <div id="debtCategoryList" class="type-list"></div>
+                        </div>
+
+                        <!-- Savings Categories -->
+                        <div id="savingsCategories" class="tab-content">
+                            <div class="add-type-form">
+                                <input type="text" id="newSavingsCategory" placeholder="New savings category" class="flex-1 border border-gray-300 rounded-lg px-3 py-2">
+                                <button onclick="addCategory('savings')" class="notion-button">Add</button>
+                            </div>
+                            <div id="savingsCategoryList" class="type-list"></div>
+                        </div>
+                    </div>
+
+                    <!-- Credit Cards Management -->
+                    <div class="notion-card p-4">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-4 flex items-center">
+                            <i class="fas fa-credit-card text-yellow-500 mr-2"></i>
+                            <span data-translate="manageCreditCards">Manage Credit Cards</span>
+                        </h3>
+                        
+                        <div class="space-y-4 mb-4">
+                            <div class="grid grid-cols-2 gap-3">
+                                <input type="text" id="newCardName" placeholder="Card name" class="border border-gray-300 rounded-lg px-3 py-2">
+                                <select id="newCardCurrency" class="border border-gray-300 rounded-lg px-3 py-2">
+                                    <option value="USD">USD</option>
+                                    <option value="CRC">CRC</option>
+                                </select>
+                            </div>
+                            <div class="grid grid-cols-2 gap-3">
+                                <input type="number" id="newCardLimit" placeholder="Credit limit" step="0.01" class="border border-gray-300 rounded-lg px-3 py-2">
+                                <input type="number" id="newCardInterest" placeholder="Interest rate %" step="0.01" class="border border-gray-300 rounded-lg px-3 py-2">
+                            </div>
+                            <button onclick="addCreditCard()" class="notion-button w-full">Add Credit Card</button>
+                        </div>
+                        
+                        <div id="creditCardsList" class="type-list"></div>
                     </div>
                 </div>
             </div>
@@ -649,9 +867,9 @@
                 <i class="fas fa-chart-bar"></i>
                 <span data-translate="graphView">Charts</span>
             </button>
-            <button onclick="openModal('expense')" class="nav-item">
-                <i class="fas fa-plus"></i>
-                <span data-translate="addExpense">Add</span>
+            <button onclick="switchView('types')" id="navTypes" class="nav-item">
+                <i class="fas fa-cog"></i>
+                <span data-translate="typesView">Types</span>
             </button>
             <button onclick="exportData()" class="nav-item">
                 <i class="fas fa-download"></i>
@@ -664,7 +882,7 @@
     <div id="modal" class="mobile-modal">
         <div class="mobile-modal-header">
             <h3 id="modalTitle" class="text-lg font-semibold text-gray-900">Add Entry</h3>
-            <button onclick="closeModal()" class="touch-target text-gray-400 hover:text-gray-600">
+            <button onclick="closeModal()" class="touch-target text-gray-500 hover:text-gray-300">
                 <i class="fas fa-times text-lg"></i>
             </button>
         </div>
@@ -693,6 +911,25 @@
                         <!-- Options will be populated by JavaScript -->
                     </select>
                 </div>
+                
+                <!-- Payment Method for Expenses -->
+                <div id="paymentMethodField" class="hidden">
+                    <label class="block text-sm font-medium text-gray-700 mb-2" data-translate="paymentMethod">Payment Method</label>
+                    <select id="paymentMethod" onchange="toggleCreditCardField()" class="w-full border border-gray-300 rounded-lg px-4 py-3 text-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <option value="cash">Cash</option>
+                        <option value="debit">Debit Card</option>
+                        <option value="credit">Credit Card</option>
+                    </select>
+                </div>
+
+                <!-- Credit Card Selection -->
+                <div id="creditCardField" class="hidden">
+                    <label class="block text-sm font-medium text-gray-700 mb-2" data-translate="creditCard">Credit Card</label>
+                    <select id="creditCardSelect" class="w-full border border-gray-300 rounded-lg px-4 py-3 text-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <!-- Options will be populated by JavaScript -->
+                    </select>
+                </div>
+
                 <div id="targetAmountField" class="hidden">
                     <div class="grid grid-cols-2 gap-4">
                         <div>
@@ -708,6 +945,21 @@
                         </div>
                     </div>
                 </div>
+                
+                <!-- Debt Initial Total Field -->
+                <div id="debtTotalField" class="hidden">
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2" data-translate="initialDebtTotal">Initial Debt Total</label>
+                            <input type="number" id="initialDebtTotal" step="0.01" class="w-full border border-gray-300 rounded-lg px-4 py-3 text-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2" data-translate="interestRate">Interest Rate (%)</label>
+                            <input type="number" id="interestRate" step="0.01" min="0" max="100" class="w-full border border-gray-300 rounded-lg px-4 py-3 text-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        </div>
+                    </div>
+                </div>
+                
                 <div>
                     <label class="block text-sm font-medium text-gray-700 mb-2" data-translate="date">Date</label>
                     <input type="date" id="date" required class="w-full border border-gray-300 rounded-lg px-4 py-3 text-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
@@ -715,6 +967,43 @@
                 <div class="flex space-x-4 pt-4">
                     <button type="submit" class="flex-1 notion-button py-4 text-lg" data-translate="addEntry">Add Entry</button>
                     <button type="button" onclick="closeModal()" class="flex-1 border border-gray-300 rounded-lg py-4 text-lg text-gray-700 hover:bg-gray-50" data-translate="cancel">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Debt Contribution Modal -->
+    <div id="contributionModal" class="mobile-modal">
+        <div class="mobile-modal-header">
+            <h3 id="contributionModalTitle" class="text-lg font-semibold text-gray-900">Make Payment</h3>
+            <button onclick="closeContributionModal()" class="touch-target text-gray-500 hover:text-gray-300">
+                <i class="fas fa-times text-lg"></i>
+            </button>
+        </div>
+        <div class="mobile-modal-content">
+            <form id="contributionForm" class="space-y-6">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2" data-translate="paymentAmount">Payment Amount</label>
+                    <input type="number" id="contributionAmount" step="0.01" required class="w-full border border-gray-300 rounded-lg px-4 py-3 text-lg focus:outline-none focus:ring-2 focus:ring-blue-500" onchange="updatePaymentPreview()">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2" data-translate="paymentCurrency">Payment Currency</label>
+                    <select id="contributionCurrency" onchange="updatePaymentPreview()" class="w-full border border-gray-300 rounded-lg px-4 py-3 text-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <option value="USD">USD</option>
+                        <option value="CRC">CRC</option>
+                    </select>
+                </div>
+                <div id="paymentPreview" class="hidden p-3 bg-gray-600 rounded-lg">
+                    <p class="text-sm text-gray-300">Payment in debt currency:</p>
+                    <p class="font-bold" id="paymentPreviewAmount"></p>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2" data-translate="paymentDate">Payment Date</label>
+                    <input type="date" id="contributionDate" required class="w-full border border-gray-300 rounded-lg px-4 py-3 text-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                </div>
+                <div class="flex space-x-4 pt-4">
+                    <button type="submit" class="flex-1 contribution-button py-4 text-lg" data-translate="makePayment">Make Payment</button>
+                    <button type="button" onclick="closeContributionModal()" class="flex-1 border border-gray-300 rounded-lg py-4 text-lg text-gray-700 hover:bg-gray-50" data-translate="cancel">Cancel</button>
                 </div>
             </form>
         </div>
@@ -774,16 +1063,16 @@
             "short_name": "Budget",
             "start_url": "./",
             "display": "standalone",
-            "background_color": "#f9fafb",
-            "theme_color": "#2563eb",
+            "background_color": "#111827",
+            "theme_color": "#1f2937",
             "icons": [
                 {
-                    "src": "https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/29460fe1-e690-4b63-b511-f95cf4448a81.png",
+                    "src": "https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/fa48675a-3ce0-4caa-a1bf-9aef225d05ff.png",
                     "sizes": "192x192",
                     "type": "image/png"
                 },
                 {
-                    "src": "https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/6e675d77-9164-454d-a18c-164ece6fe185.png", 
+                    "src": "https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/0a7c90ba-6a78-4ca1-98cd-66b34b4e8ca1.png", 
                     "sizes": "512x512",
                     "type": "image/png"
                 }
@@ -805,7 +1094,9 @@
                 exchangeRateHelp: "1 USD = X CRC",
                 listView: "List",
                 graphView: "Charts",
+                typesView: "Types",
                 totalBalance: "Total Balance",
+                totalDebt: "Total Debt",
                 income: "Income",
                 expenses: "Expenses",
                 savings: "Savings",
@@ -829,17 +1120,32 @@
                 incomeExpensesTrend: "Income vs Expenses Trend",
                 expenseCategories: "Expense Categories",
                 monthlyTotals: "Monthly Totals",
-                savingsProgress: "Savings Progress",
+                debtProgress: "Debt Progress",
                 description: "Description",
                 amount: "Amount",
                 currency: "Currency",
                 category: "Category",
                 targetAmount: "Target Amount",
                 targetCurrency: "Target Currency",
+                initialDebtTotal: "Initial Debt Total",
+                interestRate: "Interest Rate",
                 date: "Date",
                 addEntry: "Add Entry",
                 cancel: "Cancel",
-                export: "Export"
+                export: "Export",
+                filterByMonth: "Filter by Month",
+                allMonths: "All Months",
+                clearFilter: "Clear",
+                makePayment: "Make Payment",
+                paymentAmount: "Payment Amount",
+                paymentCurrency: "Payment Currency",
+                paymentDate: "Payment Date",
+                paymentMethod: "Payment Method",
+                creditCard: "Credit Card",
+                remaining: "Remaining",
+                paidOff: "Paid Off",
+                manageCategories: "Manage Categories",
+                manageCreditCards: "Manage Credit Cards"
             },
             es: {
                 title: "Control de Presupuesto",
@@ -850,7 +1156,9 @@
                 exchangeRateHelp: "1 USD = X CRC",
                 listView: "Lista",
                 graphView: "Gráficos",
+                typesView: "Tipos",
                 totalBalance: "Balance Total",
+                totalDebt: "Deuda Total",
                 income: "Ingresos",
                 expenses: "Gastos",
                 savings: "Ahorros",
@@ -874,55 +1182,75 @@
                 incomeExpensesTrend: "Tendencia Ingresos vs Gastos",
                 expenseCategories: "Categorías de Gastos",
                 monthlyTotals: "Totales Mensuales",
-                savingsProgress: "Progreso de Ahorros",
+                debtProgress: "Progreso de Deudas",
                 description: "Descripción",
                 amount: "Cantidad",
                 currency: "Moneda",
                 category: "Categoría",
                 targetAmount: "Cantidad Objetivo",
                 targetCurrency: "Moneda Objetivo",
+                initialDebtTotal: "Total Inicial de Deuda",
+                interestRate: "Tasa de Interés",
                 date: "Fecha",
                 addEntry: "Agregar Entrada",
                 cancel: "Cancelar",
-                export: "Exportar"
+                export: "Exportar",
+                filterByMonth: "Filtrar por Mes",
+                allMonths: "Todos los Meses",
+                clearFilter: "Limpiar",
+                makePayment: "Hacer Pago",
+                paymentAmount: "Cantidad de Pago",
+                paymentCurrency: "Moneda de Pago",
+                paymentDate: "Fecha de Pago",
+                paymentMethod: "Método de Pago",
+                creditCard: "Tarjeta de Crédito",
+                remaining: "Restante",
+                paidOff: "Pagado Completo",
+                manageCategories: "Gestionar Categorías",
+                manageCreditCards: "Gestionar Tarjetas de Crédito"
             }
         };
 
-        // Category translations
-        const categoryTranslations = {
-            en: {
-                income: ['Salary', 'Freelance', 'Investment', 'Business', 'Other'],
-                expense: ['Food', 'Transportation', 'Housing', 'Entertainment', 'Health', 'Shopping', 'Utilities', 'Other'],
-                debt: ['Credit Card', 'Student Loan', 'Mortgage', 'Personal Loan', 'Other'],
-                savings: ['Emergency Fund', 'Vacation', 'House', 'Car', 'Retirement', 'Other']
-            },
-            es: {
-                income: ['Salario', 'Freelance', 'Inversión', 'Negocio', 'Otro'],
-                expense: ['Comida', 'Transporte', 'Vivienda', 'Entretenimiento', 'Salud', 'Compras', 'Servicios', 'Otro'],
-                debt: ['Tarjeta de Crédito', 'Préstamo Estudiantil', 'Hipoteca', 'Préstamo Personal', 'Otro'],
-                savings: ['Fondo de Emergencia', 'Vacaciones', 'Casa', 'Auto', 'Jubilación', 'Otro']
-            }
+        // Default categories
+        const defaultCategories = {
+            income: ['Salary', 'Freelance', 'Investment', 'Business', 'Other'],
+            expense: ['Food', 'Transportation', 'Housing', 'Entertainment', 'Health', 'Shopping', 'Utilities', 'Other'],
+            debt: ['Credit Card', 'Student Loan', 'Mortgage', 'Personal Loan', 'Other'],
+            savings: ['Emergency Fund', 'Vacation', 'House', 'Car', 'Retirement', 'Other']
         };
 
-        // Data storage
+        // Data storage - THIS IS THE "DATABASE" stored in browser's localStorage
         let budgetData = {
             income: JSON.parse(localStorage.getItem('income')) || [],
             expenses: JSON.parse(localStorage.getItem('expenses')) || [],
             debt: JSON.parse(localStorage.getItem('debt')) || [],
-            savings: JSON.parse(localStorage.getItem('savings')) || []
+            savings: JSON.parse(localStorage.getItem('savings')) || [],
+            debtPayments: JSON.parse(localStorage.getItem('debtPayments')) || []
         };
 
-        // Settings
+        // Settings with dynamic categories
         let settings = {
             language: localStorage.getItem('language') || 'en',
             baseCurrency: localStorage.getItem('baseCurrency') || 'USD',
-            exchangeRate: parseFloat(localStorage.getItem('exchangeRate')) || 520
+            exchangeRate: parseFloat(localStorage.getItem('exchangeRate')) || 520,
+            categories: JSON.parse(localStorage.getItem('categories')) || defaultCategories,
+            creditCards: JSON.parse(localStorage.getItem('creditCards')) || []
         };
+
+        // Filter state
+        let currentMonthFilter = 'all';
+        let currentDebtId = null;
+        let currentCategoryTab = 'income';
 
         // Chart instances
         let charts = {};
         let currentModalType = '';
         let currentView = 'list';
+
+        // Helper function to map modal type to store key
+        function storeKeyFor(type) {
+            return type === 'expense' ? 'expenses' : type;
+        }
 
         // Currency formatting
         function formatCurrency(amount, currency) {
@@ -955,27 +1283,348 @@
             return convertCurrency(amount, currency, secondaryCurrency);
         }
 
+        // Calculate remaining debt for a specific debt
+        function getRemainingDebt(debtId) {
+            const debt = budgetData.debt.find(d => d.id === debtId);
+            if (!debt) return 0;
+
+            const payments = budgetData.debtPayments.filter(p => p.debtId === debtId);
+            const totalPayments = payments.reduce((sum, payment) => {
+                // Convert payment to debt's currency for accurate calculation
+                const paymentInDebtCurrency = convertCurrency(payment.amount, payment.currency, debt.currency);
+                return sum + paymentInDebtCurrency;
+            }, 0);
+
+            const initialDebt = debt.initialTotal || debt.amount;
+            return Math.max(0, initialDebt - totalPayments);
+        }
+
+        // Get debt summary by category
+        function getDebtSummary() {
+            const summary = {};
+            
+            budgetData.debt.forEach(debt => {
+                if (!summary[debt.category]) {
+                    summary[debt.category] = {
+                        total: 0,
+                        remaining: 0,
+                        currency: debt.currency,
+                        debts: []
+                    };
+                }
+                
+                const initialTotal = debt.initialTotal || debt.amount;
+                const remaining = getRemainingDebt(debt.id);
+                
+                // Convert to base currency for summary totals
+                const initialTotalBase = getBaseAmount(initialTotal, debt.currency);
+                const remainingBase = getBaseAmount(remaining, debt.currency);
+                
+                summary[debt.category].total += initialTotalBase;
+                summary[debt.category].remaining += remainingBase;
+                summary[debt.category].debts.push({
+                    ...debt,
+                    remaining: remaining,
+                    initialTotal: initialTotal
+                });
+            });
+            
+            return summary;
+        }
+
+        // Update payment preview in contribution modal
+        function updatePaymentPreview() {
+            const amount = parseFloat(document.getElementById('contributionAmount').value);
+            const currency = document.getElementById('contributionCurrency').value;
+            
+            if (!amount || !currentDebtId) return;
+            
+            const debt = budgetData.debt.find(d => d.id === currentDebtId);
+            if (!debt) return;
+            
+            const preview = document.getElementById('paymentPreview');
+            const previewAmount = document.getElementById('paymentPreviewAmount');
+            
+            if (currency !== debt.currency) {
+                const convertedAmount = convertCurrency(amount, currency, debt.currency);
+                previewAmount.textContent = formatCurrency(convertedAmount, debt.currency);
+                preview.classList.remove('hidden');
+            } else {
+                preview.classList.add('hidden');
+            }
+        }
+
+        // Filter data by month
+        function getFilteredData(data) {
+            if (currentMonthFilter === 'all') return data;
+            
+            return data.filter(item => {
+                const itemMonth = new Date(item.date).toLocaleDateString('en-US', { year: 'numeric', month: '2-digit' });
+                return itemMonth === currentMonthFilter;
+            });
+        }
+
+        // Populate month filter dropdown
+        function populateMonthFilter() {
+            const monthFilter = document.getElementById('monthFilter');
+            const allDates = [
+                ...budgetData.income.map(item => item.date),
+                ...budgetData.expenses.map(item => item.date),
+                ...budgetData.debt.map(item => item.date),
+                ...budgetData.savings.map(item => item.date),
+                ...budgetData.debtPayments.map(item => item.date)
+            ];
+
+            const uniqueMonths = [...new Set(allDates.map(date => {
+                return new Date(date).toLocaleDateString('en-US', { year: 'numeric', month: '2-digit' });
+            }))].sort().reverse();
+
+            // Clear existing options except "All Months"
+            const allMonthsOption = monthFilter.querySelector('option[value="all"]');
+            monthFilter.innerHTML = '';
+            monthFilter.appendChild(allMonthsOption);
+
+            // Add month options
+            uniqueMonths.forEach(month => {
+                const option = document.createElement('option');
+                option.value = month;
+                const [year, monthNum] = month.split('/');
+                const monthName = new Date(year, monthNum - 1, 1).toLocaleDateString('en-US', { year: 'numeric', month: 'long' });
+                option.textContent = monthName;
+                monthFilter.appendChild(option);
+            });
+        }
+
+        // Filter by month
+        function filterByMonth() {
+            currentMonthFilter = document.getElementById('monthFilter').value;
+            updateDashboard();
+            renderAllLists();
+            if (currentView === 'graph') {
+                renderCharts();
+            }
+        }
+
+        // Clear filter
+        function clearFilter() {
+            currentMonthFilter = 'all';
+            document.getElementById('monthFilter').value = 'all';
+            updateDashboard();
+            renderAllLists();
+            if (currentView === 'graph') {
+                renderCharts();
+            }
+        }
+
+        // Category management functions
+        function switchCategoryTab(type) {
+            currentCategoryTab = type;
+            
+            // Update tab buttons
+            document.querySelectorAll('#typesView .settings-toggle button').forEach(btn => btn.classList.remove('active'));
+            document.getElementById(`tab${type.charAt(0).toUpperCase() + type.slice(1)}`).classList.add('active');
+            
+            // Update tab content
+            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+            document.getElementById(`${type}Categories`).classList.add('active');
+            
+            renderCategoryList(type);
+        }
+
+        function addCategory(type) {
+            const input = document.getElementById(`new${type.charAt(0).toUpperCase() + type.slice(1)}Category`);
+            const newCategory = input.value.trim();
+            
+            if (newCategory && !settings.categories[type].includes(newCategory)) {
+                settings.categories[type].push(newCategory);
+                localStorage.setItem('categories', JSON.stringify(settings.categories));
+                input.value = '';
+                renderCategoryList(type);
+            }
+        }
+
+        function removeCategory(type, category) {
+            settings.categories[type] = settings.categories[type].filter(cat => cat !== category);
+            localStorage.setItem('categories', JSON.stringify(settings.categories));
+            renderCategoryList(type);
+        }
+
+        function renderCategoryList(type) {
+            const container = document.getElementById(`${type}CategoryList`);
+            const categories = settings.categories[type];
+            
+            container.innerHTML = categories.map(category => `
+                <div class="type-item">
+                    <span class="text-gray-900">${category}</span>
+                    <button onclick="removeCategory('${type}', '${category}')" class="text-red-500 hover:text-red-400">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            `).join('');
+        }
+
+        // Credit card management
+        function addCreditCard() {
+            const name = document.getElementById('newCardName').value.trim();
+            const currency = document.getElementById('newCardCurrency').value;
+            const limit = parseFloat(document.getElementById('newCardLimit').value) || 0;
+            const interest = parseFloat(document.getElementById('newCardInterest').value) || 0;
+            
+            if (name) {
+                const newCard = {
+                    id: Date.now(),
+                    name: name,
+                    currency: currency,
+                    limit: limit,
+                    interestRate: interest
+                };
+                
+                settings.creditCards.push(newCard);
+                localStorage.setItem('creditCards', JSON.stringify(settings.creditCards));
+                
+                // Clear form
+                document.getElementById('newCardName').value = '';
+                document.getElementById('newCardLimit').value = '';
+                document.getElementById('newCardInterest').value = '';
+                
+                renderCreditCardsList();
+                populateCreditCardOptions();
+            }
+        }
+
+        function removeCreditCard(cardId) {
+            settings.creditCards = settings.creditCards.filter(card => card.id !== cardId);
+            localStorage.setItem('creditCards', JSON.stringify(settings.creditCards));
+            renderCreditCardsList();
+            populateCreditCardOptions();
+        }
+
+        function renderCreditCardsList() {
+            const container = document.getElementById('creditCardsList');
+            
+            if (settings.creditCards.length === 0) {
+                container.innerHTML = `
+                    <div class="text-center empty-state py-8">
+                        <i class="fas fa-credit-card text-4xl mb-3"></i>
+                        <p>No credit cards added</p>
+                        <p class="text-sm">Add your first credit card</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            container.innerHTML = settings.creditCards.map(card => `
+                <div class="type-item">
+                    <div>
+                        <div class="text-gray-900 font-medium">${card.name}</div>
+                        <div class="text-sm text-gray-500">
+                            ${card.currency} • Limit: ${formatCurrency(card.limit, card.currency)}
+                            ${card.interestRate ? ` • ${card.interestRate}% APR` : ''}
+                        </div>
+                    </div>
+                    <button onclick="removeCreditCard(${card.id})" class="text-red-500 hover:text-red-400">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            `).join('');
+        }
+
+        function populateCreditCardOptions() {
+            const select = document.getElementById('creditCardSelect');
+            select.innerHTML = settings.creditCards.map(card => 
+                `<option value="${card.id}">${card.name} (${card.currency})</option>`
+            ).join('');
+        }
+
+        function toggleCreditCardField() {
+            const paymentMethod = document.getElementById('paymentMethod').value;
+            const creditCardField = document.getElementById('creditCardField');
+            
+            if (paymentMethod === 'credit') {
+                creditCardField.classList.remove('hidden');
+                populateCreditCardOptions();
+            } else {
+                creditCardField.classList.add('hidden');
+            }
+        }
+
+        // Open contribution modal
+        function openContributionModal(debtId) {
+            currentDebtId = debtId;
+            const debt = budgetData.debt.find(d => d.id === debtId);
+            
+            document.getElementById('contributionModalTitle').textContent = 
+                `${translations[settings.language].makePayment} - ${debt.description}`;
+            document.getElementById('contributionDate').value = new Date().toISOString().split('T')[0];
+            document.getElementById('contributionModal').classList.add('show');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Close contribution modal
+        function closeContributionModal() {
+            document.getElementById('contributionModal').classList.remove('show');
+            document.body.style.overflow = '';
+            document.getElementById('contributionForm').reset();
+            document.getElementById('paymentPreview').classList.add('hidden');
+            currentDebtId = null;
+        }
+
+        // Handle contribution form submission
+        document.getElementById('contributionForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            if (!currentDebtId) return;
+            
+            const payment = {
+                id: Date.now(),
+                debtId: currentDebtId,
+                amount: parseFloat(document.getElementById('contributionAmount').value),
+                currency: document.getElementById('contributionCurrency').value,
+                date: document.getElementById('contributionDate').value,
+                type: 'payment'
+            };
+
+            budgetData.debtPayments.push(payment);
+            saveData('debtPayments', budgetData.debtPayments);
+            
+            // Add as expense
+            const expense = {
+                id: Date.now() + 1,
+                description: `Debt Payment - ${budgetData.debt.find(d => d.id === currentDebtId).description}`,
+                amount: payment.amount,
+                currency: payment.currency,
+                category: 'Debt Payment',
+                date: payment.date,
+                paymentMethod: 'debit'
+            };
+            
+            budgetData.expenses.push(expense);
+            saveData('expenses', budgetData.expenses);
+            
+            populateMonthFilter();
+            updateDashboard();
+            renderAllLists();
+            
+            if (currentView === 'graph') {
+                renderCharts();
+            }
+            
+            closeContributionModal();
+        });
+
         // Initialize the app
         function init() {
             applyLanguage();
             updateCurrencyButtons();
+            populateMonthFilter();
             updateDashboard();
             renderAllLists();
+            renderAllCategoryLists();
+            renderCreditCardsList();
+            populateCreditCardOptions();
             
             // Prevent scroll bounce on iOS
             document.body.addEventListener('touchstart', function(e) {
-                if (e.target === document.body) {
-                    e.preventDefault();
-                }
-            }, { passive: false });
-            
-            document.body.addEventListener('touchend', function(e) {
-                if (e.target === document.body) {
-                    e.preventDefault();
-                }
-            }, { passive: false });
-            
-            document.body.addEventListener('touchmove', function(e) {
                 if (e.target === document.body) {
                     e.preventDefault();
                 }
@@ -1052,24 +1701,37 @@
             currentView = view;
             const listView = document.getElementById('listView');
             const graphView = document.getElementById('graphView');
+            const typesView = document.getElementById('typesView');
             const navList = document.getElementById('navList');
             const navGraph = document.getElementById('navGraph');
+            const navTypes = document.getElementById('navTypes');
+
+            // Hide all views
+            listView.classList.add('hidden');
+            graphView.classList.add('hidden');
+            typesView.classList.add('hidden');
+            
+            // Remove active from all nav items
+            navList.classList.remove('active');
+            navGraph.classList.remove('active');
+            navTypes.classList.remove('active');
 
             if (view === 'list') {
                 listView.classList.remove('hidden');
-                graphView.classList.add('hidden');
                 navList.classList.add('active');
-                navGraph.classList.remove('active');
-            } else {
-                listView.classList.add('hidden');
+            } else if (view === 'graph') {
                 graphView.classList.remove('hidden');
-                navList.classList.remove('active');
                 navGraph.classList.add('active');
                 
                 // Render charts when switching to graph view
                 setTimeout(() => {
                     renderCharts();
                 }, 100);
+            } else if (view === 'types') {
+                typesView.classList.remove('hidden');
+                navTypes.classList.add('active');
+                renderAllCategoryLists();
+                renderCreditCardsList();
             }
         }
 
@@ -1085,6 +1747,8 @@
             const title = document.getElementById('modalTitle');
             const categorySelect = document.getElementById('category');
             const targetAmountField = document.getElementById('targetAmountField');
+            const debtTotalField = document.getElementById('debtTotalField');
+            const paymentMethodField = document.getElementById('paymentMethodField');
             const dateInput = document.getElementById('date');
 
             // Set current date as default
@@ -1094,19 +1758,35 @@
             const titleKey = `add${type.charAt(0).toUpperCase() + type.slice(1)}`;
             title.textContent = translations[settings.language][titleKey] || `Add ${type}`;
 
-            // Populate category options
-            const categories = categoryTranslations[settings.language][type];
+            // Populate category options from settings
+            const categories = settings.categories[type];
             categorySelect.innerHTML = categories.map(cat => 
                 `<option value="${cat}">${cat}</option>`
             ).join('');
 
-            // Show/hide target amount field for savings
+            // Show/hide fields based on type
             if (type === 'savings') {
                 targetAmountField.classList.remove('hidden');
+                debtTotalField.classList.add('hidden');
+                paymentMethodField.classList.add('hidden');
                 document.getElementById('targetAmount').required = true;
+            } else if (type === 'debt') {
+                targetAmountField.classList.add('hidden');
+                debtTotalField.classList.remove('hidden');
+                paymentMethodField.classList.add('hidden');
+                document.getElementById('initialDebtTotal').required = true;
+            } else if (type === 'expense') {
+                targetAmountField.classList.add('hidden');
+                debtTotalField.classList.add('hidden');
+                paymentMethodField.classList.remove('hidden');
+                document.getElementById('targetAmount').required = false;
+                document.getElementById('initialDebtTotal').required = false;
             } else {
                 targetAmountField.classList.add('hidden');
+                debtTotalField.classList.add('hidden');
+                paymentMethodField.classList.add('hidden');
                 document.getElementById('targetAmount').required = false;
+                document.getElementById('initialDebtTotal').required = false;
             }
 
             modal.classList.add('show');
@@ -1119,9 +1799,12 @@
             modal.classList.remove('show');
             document.body.style.overflow = '';
             document.getElementById('entryForm').reset();
+            
+            // Hide credit card field
+            document.getElementById('creditCardField').classList.add('hidden');
         }
 
-        // Handle form submission
+        // Handle form submission - FIXED BUG HERE
         document.getElementById('entryForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
@@ -1137,13 +1820,59 @@
             if (currentModalType === 'savings') {
                 entry.targetAmount = parseFloat(document.getElementById('targetAmount').value);
                 entry.targetCurrency = document.getElementById('targetCurrency').value;
+            } else if (currentModalType === 'debt') {
+                entry.initialTotal = parseFloat(document.getElementById('initialDebtTotal').value);
+                entry.interestRate = parseFloat(document.getElementById('interestRate').value) || 0;
+            } else if (currentModalType === 'expense') {
+                entry.paymentMethod = document.getElementById('paymentMethod').value;
+                
+                // Handle credit card expenses
+                if (entry.paymentMethod === 'credit') {
+                    const cardId = parseInt(document.getElementById('creditCardSelect').value);
+                    const card = settings.creditCards.find(c => c.id === cardId);
+                    
+                    if (card) {
+                        entry.creditCardId = cardId;
+                        
+                        // Convert expense amount to card currency
+                        const amountInCardCurrency = convertCurrency(entry.amount, entry.currency, card.currency);
+                        
+                        // Find or create debt for this credit card
+                        let cardDebt = budgetData.debt.find(d => d.creditCardId === cardId);
+                        
+                        if (!cardDebt) {
+                            // Create new debt for this card
+                            cardDebt = {
+                                id: Date.now() + 2,
+                                description: card.name,
+                                amount: amountInCardCurrency,
+                                currency: card.currency,
+                                category: 'Credit Card',
+                                date: entry.date,
+                                initialTotal: amountInCardCurrency,
+                                interestRate: card.interestRate,
+                                creditCardId: cardId
+                            };
+                            budgetData.debt.push(cardDebt);
+                        } else {
+                            // Update existing debt
+                            cardDebt.initialTotal = (cardDebt.initialTotal || cardDebt.amount) + amountInCardCurrency;
+                        }
+                        
+                        saveData('debt', budgetData.debt);
+                    }
+                }
             }
 
-            budgetData[currentModalType].push(entry);
-            saveData(currentModalType, budgetData[currentModalType]);
+            // FIX: Use storeKey to map 'expense' to 'expenses'
+            const storeKey = storeKeyFor(currentModalType);
             
+            budgetData[storeKey].push(entry);
+            saveData(storeKey, budgetData[storeKey]);
+            
+            populateMonthFilter();
             updateDashboard();
-            renderList(currentModalType);
+            renderList(storeKey);
             
             // Update charts if in graph view
             if (currentView === 'graph') {
@@ -1162,15 +1891,28 @@
                 debt: { base: 0, secondary: 0 }
             };
 
-            // Calculate totals in both currencies
+            // Calculate totals in both currencies using filtered data
             Object.keys(totals).forEach(type => {
-                budgetData[type].forEach(item => {
-                    const baseAmount = getBaseAmount(item.amount, item.currency);
-                    const secondaryAmount = getSecondaryAmount(item.amount, item.currency);
-                    
-                    totals[type].base += baseAmount;
-                    totals[type].secondary += secondaryAmount;
-                });
+                if (type === 'debt') {
+                    // For debt, calculate remaining debt amounts
+                    budgetData.debt.forEach(debt => {
+                        const remaining = getRemainingDebt(debt.id);
+                        const remainingBase = getBaseAmount(remaining, debt.currency);
+                        const remainingSecondary = getSecondaryAmount(remaining, debt.currency);
+                        
+                        totals.debt.base += remainingBase;
+                        totals.debt.secondary += remainingSecondary;
+                    });
+                } else {
+                    const filteredData = getFilteredData(budgetData[type]);
+                    filteredData.forEach(item => {
+                        const baseAmount = getBaseAmount(item.amount, item.currency);
+                        const secondaryAmount = getSecondaryAmount(item.amount, item.currency);
+                        
+                        totals[type].base += baseAmount;
+                        totals[type].secondary += secondaryAmount;
+                    });
+                }
             });
 
             const totalBalance = totals.income.base - totals.expenses.base - totals.debt.base + totals.savings.base;
@@ -1188,8 +1930,53 @@
             document.getElementById('totalExpenses').textContent = formatCurrency(totals.expenses.base, settings.baseCurrency);
             document.getElementById('totalExpensesSecondary').textContent = formatCurrency(totals.expenses.secondary, secondaryCurrency);
             
-            document.getElementById('totalSavings').textContent = formatCurrency(totals.savings.base, settings.baseCurrency);
-            document.getElementById('totalSavingsSecondary').textContent = formatCurrency(totals.savings.secondary, secondaryCurrency);
+            document.getElementById('totalDebt').textContent = formatCurrency(totals.debt.base, settings.baseCurrency);
+            document.getElementById('totalDebtSecondary').textContent = formatCurrency(totals.debt.secondary, secondaryCurrency);
+        }
+
+        // Render debt summary
+        function renderDebtSummary() {
+            const container = document.getElementById('debtSummary');
+            const summary = getDebtSummary();
+            const categories = Object.keys(summary);
+
+            if (categories.length === 0) {
+                container.innerHTML = '';
+                return;
+            }
+
+            container.innerHTML = categories.map(category => {
+                const data = summary[category];
+                const progress = data.total > 0 ? ((data.total - data.remaining) / data.total) * 100 : 0;
+                
+                return `
+                    <div class="debt-summary-card">
+                        <div class="flex justify-between items-start mb-2">
+                            <h4 class="font-medium text-gray-900">${category}</h4>
+                            <span class="currency-badge">${settings.baseCurrency}</span>
+                        </div>
+                        <div class="mb-2">
+                            <div class="flex justify-between text-sm mb-1">
+                                <span>${formatCurrency(data.total - data.remaining, settings.baseCurrency)} paid of ${formatCurrency(data.total, settings.baseCurrency)}</span>
+                                <span>${progress.toFixed(1)}%</span>
+                            </div>
+                            <div class="w-full bg-gray-600 rounded-full h-2">
+                                <div class="debt-progress-bar" style="width: ${progress}%"></div>
+                            </div>
+                        </div>
+                        <div class="text-sm text-gray-500">
+                            ${translations[settings.language].remaining}: ${formatCurrency(data.remaining, settings.baseCurrency)}
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Render all category lists
+        function renderAllCategoryLists() {
+            ['income', 'expense', 'debt', 'savings'].forEach(type => {
+                renderCategoryList(type);
+            });
         }
 
         // Render all lists
@@ -1198,12 +1985,18 @@
             renderList('expenses');
             renderList('debt');
             renderList('savings');
+            renderDebtSummary();
         }
 
         // Render individual list
         function renderList(type) {
-            const container = document.getElementById(`${type}List`) || document.getElementById(`${type.slice(0, -1)}List`);
-            const data = budgetData[type];
+            const container = document.getElementById(`${type}List`);
+            if (!container) {
+                console.error(`Container not found for type: ${type}`);
+                return;
+            }
+            
+            const data = getFilteredData(budgetData[type]);
 
             if (data.length === 0) {
                 const emptyStateKeys = {
@@ -1222,8 +2015,8 @@
                 
                 const empty = emptyStateKeys[type];
                 container.innerHTML = `
-                    <div class="text-center text-gray-500 py-8">
-                        <i class="${icons[type]} text-4xl mb-3 text-gray-300"></i>
+                    <div class="text-center empty-state py-8">
+                        <i class="${icons[type]} text-4xl mb-3"></i>
                         <p>${translations[settings.language][empty.text]}</p>
                         <p class="text-sm">${translations[settings.language][empty.subtext]}</p>
                     </div>
@@ -1241,6 +2034,8 @@
                         item.targetAmount;
                     
                     const progress = Math.min((item.amount / targetInSameCurrency) * 100, 100);
+                    const secondaryAmount = getSecondaryAmount(item.amount, item.currency);
+                    const secondaryCurrency = settings.baseCurrency === 'USD' ? 'CRC' : 'USD';
                     
                     return `
                         <div class="savings-item p-4 border border-gray-200 rounded-lg">
@@ -1248,10 +2043,11 @@
                                 <div class="flex-1">
                                     <h4 class="font-medium text-gray-900">${item.description}</h4>
                                     <p class="text-sm text-gray-500">${item.category}</p>
+                                    ${item.currency !== secondaryCurrency ? `<p class="secondary-amount">${formatCurrency(secondaryAmount, secondaryCurrency)}</p>` : ''}
                                 </div>
                                 <div class="flex items-center space-x-2">
                                     <span class="currency-badge">${item.currency}</span>
-                                    <button onclick="deleteEntry('${type}', ${item.id})" class="touch-target text-red-500 hover:text-red-700">
+                                    <button onclick="deleteEntry('${type}', ${item.id})" class="touch-target text-red-500 hover:text-red-400">
                                         <i class="fas fa-trash"></i>
                                     </button>
                                 </div>
@@ -1261,52 +2057,91 @@
                                     <span>${formatCurrency(item.amount, item.currency)} of ${formatCurrency(item.targetAmount, item.targetCurrency || item.currency)}</span>
                                     <span>${progress.toFixed(1)}%</span>
                                 </div>
-                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="w-full bg-gray-600 rounded-full h-2">
                                     <div class="progress-bar" style="width: ${progress}%"></div>
                                 </div>
                             </div>
-                            <p class="text-xs text-gray-400">${new Date(item.date).toLocaleDateString()}</p>
+                            <p class="text-xs text-gray-500">${new Date(item.date).toLocaleDateString()}</p>
                         </div>
                     `;
                 }).join('');
             } else if (type === 'debt') {
-                container.innerHTML = sortedData.map(item => `
-                    <div class="debt-item p-4 border border-gray-200 rounded-lg">
-                        <div class="flex justify-between items-start">
+                container.innerHTML = sortedData.map(item => {
+                    const remaining = getRemainingDebt(item.id);
+                    const initialTotal = item.initialTotal || item.amount;
+                    const progress = initialTotal > 0 ? ((initialTotal - remaining) / initialTotal) * 100 : 0;
+                    const isPaidOff = remaining <= 0;
+                    const secondaryAmount = getSecondaryAmount(remaining, item.currency);
+                    const secondaryCurrency = item.currency === 'USD' ? 'CRC' : 'USD';
+                    
+                    return `
+                        <div class="debt-item p-4 border border-gray-200 rounded-lg ${isPaidOff ? 'opacity-60' : ''}">
+                            <div class="flex justify-between items-start mb-2">
+                                <div class="flex-1">
+                                    <h4 class="font-medium text-gray-900">${item.description} ${isPaidOff ? '(' + translations[settings.language].paidOff + ')' : ''}</h4>
+                                    <p class="text-sm text-gray-500">${item.category}</p>
+                                    <div class="mt-2">
+                                        <div class="flex justify-between text-sm mb-1">
+                                            <div>
+                                                <span>${translations[settings.language].remaining}: ${formatCurrency(remaining, item.currency)}</span>
+                                                ${item.currency !== secondaryCurrency ? `<p class="secondary-amount">${formatCurrency(secondaryAmount, secondaryCurrency)}</p>` : ''}
+                                            </div>
+                                            <span>${progress.toFixed(1)}% paid</span>
+                                        </div>
+                                        <div class="w-full bg-gray-600 rounded-full h-2">
+                                            <div class="debt-progress-bar" style="width: ${progress}%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex flex-col items-end space-y-2">
+                                    <span class="currency-badge">${item.currency}</span>
+                                    <div class="flex space-x-2">
+                                        ${!isPaidOff ? `<button onclick="openContributionModal(${item.id})" class="contribution-button text-xs px-2 py-1">Pay</button>` : ''}
+                                        <button onclick="deleteEntry('${type}', ${item.id})" class="touch-target text-red-500 hover:text-red-400">
+                                            <i class="fas fa-trash text-sm"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-xs text-gray-500">
+                                <p>Initial: ${formatCurrency(initialTotal, item.currency)} • ${new Date(item.date).toLocaleDateString()}</p>
+                                ${item.interestRate ? `<p>Interest Rate: ${item.interestRate}%</p>` : ''}
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+            } else {
+                const colorClass = type === 'income' ? 'text-green-500' : 'text-red-500';
+                const itemClass = type === 'income' ? 'income-item' : 'expense-item';
+                
+                container.innerHTML = sortedData.map(item => {
+                    const secondaryAmount = getSecondaryAmount(item.amount, item.currency);
+                    const secondaryCurrency = item.currency === 'USD' ? 'CRC' : 'USD';
+                    const paymentMethodIcons = { credit: '💳', debit: '🏦', cash: '💵' };
+                    const paymentIcon = paymentMethodIcons[item.paymentMethod] || '';
+                    
+                    return `
+                        <div class="${itemClass} flex justify-between items-center p-3 border border-gray-200 rounded-lg">
                             <div class="flex-1">
                                 <h4 class="font-medium text-gray-900">${item.description}</h4>
-                                <p class="text-sm text-gray-500">${item.category}</p>
-                                <p class="text-lg font-bold text-yellow-600 mt-1">${formatCurrency(item.amount, item.currency)}</p>
+                                <p class="text-sm text-gray-500">
+                                    ${item.category} • ${new Date(item.date).toLocaleDateString()}
+                                    ${paymentIcon ? ` • ${paymentIcon}` : ''}
+                                </p>
+                                ${item.currency !== secondaryCurrency ? `<p class="secondary-amount">${formatCurrency(secondaryAmount, secondaryCurrency)}</p>` : ''}
                             </div>
                             <div class="flex items-center space-x-2">
+                                <div class="text-right">
+                                    <span class="font-bold ${colorClass}">${formatCurrency(item.amount, item.currency)}</span>
+                                </div>
                                 <span class="currency-badge">${item.currency}</span>
-                                <button onclick="deleteEntry('${type}', ${item.id})" class="touch-target text-red-500 hover:text-red-700">
+                                <button onclick="deleteEntry('${type}', ${item.id})" class="touch-target text-red-500 hover:text-red-400">
                                     <i class="fas fa-trash"></i>
                                 </button>
                             </div>
                         </div>
-                        <p class="text-xs text-gray-400 mt-2">${new Date(item.date).toLocaleDateString()}</p>
-                    </div>
-                `).join('');
-            } else {
-                const colorClass = type === 'income' ? 'text-green-600' : 'text-red-600';
-                const itemClass = type === 'income' ? 'income-item' : 'expense-item';
-                
-                container.innerHTML = sortedData.map(item => `
-                    <div class="${itemClass} flex justify-between items-center p-3 border border-gray-200 rounded-lg">
-                        <div class="flex-1">
-                            <h4 class="font-medium text-gray-900">${item.description}</h4>
-                            <p class="text-sm text-gray-500">${item.category} • ${new Date(item.date).toLocaleDateString()}</p>
-                        </div>
-                        <div class="flex items-center space-x-2">
-                            <span class="font-bold ${colorClass}">${formatCurrency(item.amount, item.currency)}</span>
-                            <span class="currency-badge">${item.currency}</span>
-                            <button onclick="deleteEntry('${type}', ${item.id})" class="touch-target text-red-500 hover:text-red-700">
-                                <i class="fas fa-trash"></i>
-                            </button>
-                        </div>
-                    </div>
-                `).join('');
+                    `;
+                }).join('');
             }
         }
 
@@ -1318,9 +2153,18 @@
                 
             if (confirm(confirmMessage)) {
                 budgetData[type] = budgetData[type].filter(item => item.id !== id);
+                
+                // If deleting a debt, also remove associated payments
+                if (type === 'debt') {
+                    budgetData.debtPayments = budgetData.debtPayments.filter(payment => payment.debtId !== id);
+                    saveData('debtPayments', budgetData.debtPayments);
+                }
+                
                 saveData(type, budgetData[type]);
+                populateMonthFilter();
                 updateDashboard();
                 renderList(type);
+                renderDebtSummary();
                 
                 // Update charts if in graph view
                 if (currentView === 'graph') {
@@ -1351,7 +2195,7 @@
             renderIncomeExpenseChart();
             renderExpenseCategoryChart();
             renderMonthlyTotalsChart();
-            renderSavingsProgressChart();
+            renderDebtProgressChart();
         }
 
         // Income vs Expenses trend chart
@@ -1364,8 +2208,10 @@
 
             // Group data by month (convert all to base currency)
             const monthlyData = {};
+            const filteredIncome = getFilteredData(budgetData.income);
+            const filteredExpenses = getFilteredData(budgetData.expenses);
             
-            [...budgetData.income, ...budgetData.expenses].forEach(item => {
+            [...filteredIncome, ...filteredExpenses].forEach(item => {
                 const month = new Date(item.date).toLocaleDateString('en-US', { year: 'numeric', month: 'short' });
                 if (!monthlyData[month]) {
                     monthlyData[month] = { income: 0, expenses: 0 };
@@ -1373,7 +2219,7 @@
                 
                 const baseAmount = getBaseAmount(item.amount, item.currency);
                 
-                if (budgetData.income.includes(item)) {
+                if (filteredIncome.includes(item)) {
                     monthlyData[month].income += baseAmount;
                 } else {
                     monthlyData[month].expenses += baseAmount;
@@ -1416,16 +2262,31 @@
                     maintainAspectRatio: false,
                     plugins: {
                         legend: {
-                            position: 'top'
+                            position: 'top',
+                            labels: {
+                                color: '#f9fafb'
+                            }
                         }
                     },
                     scales: {
+                        x: {
+                            ticks: {
+                                color: '#9ca3af'
+                            },
+                            grid: {
+                                color: '#374151'
+                            }
+                        },
                         y: {
                             beginAtZero: true,
                             ticks: {
+                                color: '#9ca3af',
                                 callback: function(value) {
                                     return formatCurrency(value, settings.baseCurrency);
                                 }
+                            },
+                            grid: {
+                                color: '#374151'
                             }
                         }
                     }
@@ -1443,7 +2304,8 @@
 
             // Group expenses by category (convert all to base currency)
             const categoryData = {};
-            budgetData.expenses.forEach(item => {
+            const filteredExpenses = getFilteredData(budgetData.expenses);
+            filteredExpenses.forEach(item => {
                 const baseAmount = getBaseAmount(item.amount, item.currency);
                 categoryData[item.category] = (categoryData[item.category] || 0) + baseAmount;
             });
@@ -1469,7 +2331,10 @@
                     maintainAspectRatio: false,
                     plugins: {
                         legend: {
-                            position: 'bottom'
+                            position: 'bottom',
+                            labels: {
+                                color: '#f9fafb'
+                            }
                         },
                         tooltip: {
                             callbacks: {
@@ -1495,8 +2360,11 @@
 
             // Group data by month (convert all to base currency)
             const monthlyData = {};
+            const filteredIncome = getFilteredData(budgetData.income);
+            const filteredExpenses = getFilteredData(budgetData.expenses);
+            const filteredSavings = getFilteredData(budgetData.savings);
             
-            [...budgetData.income, ...budgetData.expenses, ...budgetData.savings].forEach(item => {
+            [...filteredIncome, ...filteredExpenses, ...filteredSavings].forEach(item => {
                 const month = new Date(item.date).toLocaleDateString('en-US', { year: 'numeric', month: 'short' });
                 if (!monthlyData[month]) {
                     monthlyData[month] = { income: 0, expenses: 0, savings: 0 };
@@ -1504,11 +2372,11 @@
                 
                 const baseAmount = getBaseAmount(item.amount, item.currency);
                 
-                if (budgetData.income.includes(item)) {
+                if (filteredIncome.includes(item)) {
                     monthlyData[month].income += baseAmount;
-                } else if (budgetData.expenses.includes(item)) {
+                } else if (filteredExpenses.includes(item)) {
                     monthlyData[month].expenses += baseAmount;
-                } else if (budgetData.savings.includes(item)) {
+                } else if (filteredSavings.includes(item)) {
                     monthlyData[month].savings += baseAmount;
                 }
             });
@@ -1546,16 +2414,31 @@
                     maintainAspectRatio: false,
                     plugins: {
                         legend: {
-                            position: 'top'
+                            position: 'top',
+                            labels: {
+                                color: '#f9fafb'
+                            }
                         }
                     },
                     scales: {
+                        x: {
+                            ticks: {
+                                color: '#9ca3af'
+                            },
+                            grid: {
+                                color: '#374151'
+                            }
+                        },
                         y: {
                             beginAtZero: true,
                             ticks: {
+                                color: '#9ca3af',
                                 callback: function(value) {
                                     return formatCurrency(value, settings.baseCurrency);
                                 }
+                            },
+                            grid: {
+                                color: '#374151'
                             }
                         }
                     }
@@ -1563,38 +2446,43 @@
             });
         }
 
-        // Savings progress chart
-        function renderSavingsProgressChart() {
-            const ctx = document.getElementById('savingsProgressChart').getContext('2d');
+        // Debt progress chart
+        function renderDebtProgressChart() {
+            const ctx = document.getElementById('debtProgressChart').getContext('2d');
             
-            if (charts.savingsProgress) {
-                charts.savingsProgress.destroy();
+            if (charts.debtProgress) {
+                charts.debtProgress.destroy();
             }
 
-            const labels = budgetData.savings.map(item => item.description);
-            const currentAmounts = budgetData.savings.map(item => getBaseAmount(item.amount, item.currency));
-            const targetAmounts = budgetData.savings.map(item => {
-                const targetCurrency = item.targetCurrency || item.currency;
-                return getBaseAmount(item.targetAmount, targetCurrency);
-            });
+            const debtSummary = getDebtSummary();
+            const categories = Object.keys(debtSummary);
+            
+            if (categories.length === 0) {
+                ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+                return;
+            }
+
+            const totalAmounts = categories.map(cat => debtSummary[cat].total);
+            const remainingAmounts = categories.map(cat => debtSummary[cat].remaining);
+            const paidAmounts = categories.map(cat => debtSummary[cat].total - debtSummary[cat].remaining);
 
             const chartLabels = {
-                en: { current: 'Current Amount', target: 'Target Amount' },
-                es: { current: 'Cantidad Actual', target: 'Cantidad Objetivo' }
+                en: { remaining: 'Remaining', paid: 'Paid' },
+                es: { remaining: 'Restante', paid: 'Pagado' }
             };
 
-            charts.savingsProgress = new Chart(ctx, {
+            charts.debtProgress = new Chart(ctx, {
                 type: 'bar',
                 data: {
-                    labels: labels,
+                    labels: categories,
                     datasets: [{
-                        label: chartLabels[settings.language].current,
-                        data: currentAmounts,
-                        backgroundColor: '#8b5cf6'
+                        label: chartLabels[settings.language].paid,
+                        data: paidAmounts,
+                        backgroundColor: '#10b981'
                     }, {
-                        label: chartLabels[settings.language].target,
-                        data: targetAmounts,
-                        backgroundColor: '#e5e7eb'
+                        label: chartLabels[settings.language].remaining,
+                        data: remainingAmounts,
+                        backgroundColor: '#f59e0b'
                     }]
                 },
                 options: {
@@ -1602,16 +2490,33 @@
                     maintainAspectRatio: false,
                     plugins: {
                         legend: {
-                            position: 'top'
+                            position: 'top',
+                            labels: {
+                                color: '#f9fafb'
+                            }
                         }
                     },
                     scales: {
+                        x: {
+                            stacked: true,
+                            ticks: {
+                                color: '#9ca3af'
+                            },
+                            grid: {
+                                color: '#374151'
+                            }
+                        },
                         y: {
+                            stacked: true,
                             beginAtZero: true,
                             ticks: {
+                                color: '#9ca3af',
                                 callback: function(value) {
                                     return formatCurrency(value, settings.baseCurrency);
                                 }
+                            },
+                            grid: {
+                                color: '#374151'
                             }
                         }
                     }
